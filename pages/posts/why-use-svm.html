@@ -1,0 +1,60 @@
+title: Why use SVM?
+author: Greg Lamp
+date: 20-12-2012
+
+{% extends "post.html" %}
+{% block body %}
+
+{% load markup %}
+{% filter markdown %}
+
+What is SVM?
+---------------------------------------------------------------
+
+SVM is a machine learning algorithm developed by the Soviets during the Cold War. It remained unknown to the West until the late 1980s. Even though it's been around a while it's still considered relatively new for a variety of reasons.
+	1) Lack of computing power. SVM has a high training cost (O(n^2)). It just wasn't practical to use SVM until a few years ago.
+	2) Lack of benefit. Piggybacking off of #1, as a consequence of a lack of computing power, problems were forced to be setup with fewer variables. SVM really comes into its own when you're working with a problem that has a large number of features and a complex relationship between them. SVM is capable of finding the hidden relationships between.
+	3) Difficult implementation. Writing your own SVM training functions is no fun. Until a few years ago, there weren't any good, open source SVM libraries--libsvm is one of the more popular ones now.
+
+So great, we have a Soviet algorithm that's difficult to train and requires a lot of horsepower. But what exactly makes it so awesome?
+
+Well SVM it capable of doing both classification and regression. It's proven to be one of the best classification algorithms and has won a lot fo competitions (insert here). To explain SVM, let's take the classification use case as an example.
+
+In any supervised learning problem, you typically start out with some training data. This consists of a set of metrics and a set of labels or classes associated with each item in the set of metrics. Based on this data, SVM is going to compute a "hyperplane". The hyperplane is a fancy way of saying a boundary or fence. If you have 2 possible labels, there is going to be one boundary. If there are 3 labels then 2 lines, etc. What's special about this is not the fact that it's computing boundaries (many algorithms do this). The magic is in the way that the boundaries are being calculated. SVM is going to evaluate all possible combinations between variables by using the something called the "kernel trick". Compare this to a linear model where it's essentially looking for direct correlations bewteen a set of variables and an output variable. In the event that the relationship between a dependent variable and independent variable is non-linear, it's not going to be nearly as accurate as SVM. Taking transformations between variables (log(x), (x^2)) becomes much less important since it's going to be accounted for in the algorithm. If you're still having troubles picturing this, see if you can follow along with this example.
+
+
+Let's say that you're a fisherman and you're fishing in a lake that is filled with 3 types of fish--minnows, bass, and catfish. If I asked you to draw 2 lines to seperate the fish into species specific groups how would you do it? Well you might start by drawing a line for the minnows that included shallow spots and near surfaces areas. For the bass you might select the middle portions of the lake, and for the catfish you might include all of the spots with water below 55 F, but not in spots where the water was too shallow. Hopefully you can imagine drawing lines in this 3D space that would optimize your success rate for predicting what type of fish would be in each location.
+
+Now if you wanted to translate your lines into a model, why would you want to use SVM? Well SVM let's your boundary lines be any shape, while linear models are going to restrict you to straight lines. This doesn't exactly work when you're trying to draw lines based on temperature, depth, and other variables all at the same time. SVM allows you to draw these lines not just in 2D or even 3D, but actually in a much, much higher n-D that is very difficult to conceptualize. In any event, it works out because you don't have to worry about creating an explicit equation for each line!
+
+<delete>
+Since you're a really technical fisherman always seeking ways to optimize your outings you decide to come up with a model to tell you where you can find each type of fish in the lake. Based on your experience you know that minnows like to be near the surface and near the shore but not if its cold and not when there are bass nearby; bass like cold water but not near the middle of the lake, ... We could go on forever. Instead of trying to map out a model 1 variable at a time you decide to sample fish from all parts of the lake, recording the species, temperature, depth, and coordinates of all your catches. You take your data and use SVM to create a model and voila! 
+</delete>
+
+I think the best way to explain is with a quick demo. Let's say we have a dataset that consists of green and red points. When plotted with their coordinates, the points make the shape of a red circle with a green outline (and look an awful lot like Bangaldeese flag).
+
+<BengaldeshFlag>
+
+No big deal right? It's a red circle. But what would happen if somehow we lost 20% of our data. What if we couldn't recover it but we wanted to find a way to approximate what that missing 20% looked like.
+
+<BengaldeshFlag_missing>
+
+So how do we figure out what the missing 20% looks like? One approach might be to build a model using the 80% of the data we do have as a training set. But what type of model do we use? Let's try out the following:
+ - GLM (generalized linear model)
+ - Decision Tree
+ - SVM
+
+Training 3 models based soley on the raw data from the dataset...
+
+
+We then need to take our models and make predictions on the missing 20% of our data. Note: GLM and decision trees output probabilities by default, so we're going to attribute all probabilities over .5 to red. Let's take a look at what our predicted shapes look like...
+
+<FlagPrediction>
+
+
+From the plots, it's pretty clear that SVM is the winner. But why? Well if you look at the predicted shapes of the decision tree and GLM models, what do you notice? Straight boundaries. Our input model did not include any transformations to account for the non-linear relationship between x, y, and the color. Given a specific set of transformations we definitely could have made GLM and the DT perform better, but why waste time? With no complex transformations or scaling, SVM only misclassified 157/2100 points (93% accuracy as opposed to DT-57% and GLM-18%! Of those all misclassified points were red--hence the slight bulge.
+
+So why not use SVM for everything? Well unfortunately the magic of SVM is also the biggest drawback. In creating the complex boundaries between groups, SVM cannot actually provide explicit feedback to the user as to what the equation for that boundary is. In other words, it's a "black box"--things go in, answers come out, but the inner workings are confidential. GLM and decision trees on the contrary are exactly the opposite. It's very easy to understand exactly what and why DT and GLM are doing. 
+
+{% endfilter %}
+{% endblock %}

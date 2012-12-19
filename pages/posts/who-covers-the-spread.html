@@ -1,0 +1,57 @@
+title: Who covers the spread?
+author: Greg Lamp
+date: 01-09-2012
+
+{% extends "post.html" %}
+{% block body %}
+
+{% load markup %}
+{% filter markdown %}
+
+<p>
+Interstingly enough, it seems not all teams are staked equally. While most teams cover between 45%-55% (or about half) of their games, there are a few teams you might want to stay away from (or not bet against).  
+</p>
+
+<a href="../static/img/01/WhoCoversTheSpread.png" title="Open picture in new window" target="_blank">
+	<img src="../static/img/01/WhoCoversTheSpread.png" style="height:100%; width:100%;">
+</a>
+
+<p>
+Step 1: Data collection...
+There are plenty of sites that offer historical spreads for college football games. I wrote a quick screen scraper using Python that collected the team, spread, score, and date for each game and each team since 1985. It was pretty basic--just BeautifulSoup writing to a csv. 
+</p>
+
+<p>
+Step 2: Loading it into R...
+Next I wanted to take a look at the relationship between the Vegas spreads vs the acutal results of the games. As you might expect things looked pretty normal.
+</p>
+
+<a href="../static/img/01/SpreadDensity.png " title="Open picture in new window" target="_blank">
+	<img src="../static/img/01/SpreadDensity.png" style="height:100%; width:100%;">
+</a>
+
+<p>
+I wound up limiting to games played since 2000 to make the sample a little more consistent. Controlling for some other variables like week of the season and year didn't seem to make much difference. There were a few long tail events out to the right, but nothing mind blowing.
+</p>
+
+<a href="../static/img/01/DensityByWeek.png" title="Open picture in new window" target="_blank">
+	<img src="../static/img/01/DensityByWeek.png" style="height:100%; width:100%;">
+</a>
+
+<a href="../static/img/01/SpreadDiverganceByWeek.png" title="Open picture in new window" target="_blank">
+	<img src="../static/img/01/SpreadDiverganceByWeek.png" style="height:100%; width:100%;">
+</a>
+
+<p>
+So far nothing spectacular. But when you drill down into each team, things start to get a little bit more interesting. As mentioned earlier, most teams wind up somewhere right around the 50% mark. But a few teams stick out...
+
+Boise St., everyone's favorite small conference bully, covers a whopping 61% of spreads. Not very surprising since they have to show off against the likes of Idaho and Wyoming in order to make an impression on the Coaches and AP polls.
+
+UCONN (61%) and Washington (37%) also stand out, but to be honest I'm not sure what to make of them.
+
+Oddly enough, arch rivals Ohio State and Michigan wind up at opposite ends of the spectrum with Michigan near the bottom and Ohio State at #3. 
+</p>
+
+
+{% endfilter %}
+{% endblock %}

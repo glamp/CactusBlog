@@ -1,4 +1,4 @@
-body		{font: 15px/1.7em "Helvetica Neue", helvetica, Arial, verdana, sans-serif; color:#262a34;padding:0 40px 0 40px; max-width:600px; margin:0 auto; -webkit-font-smoothing:antialiased; }
+body		{font: 15px/1.7em "Helvetica Neue", helvetica, Arial, verdana, sans-serif; color:#262a34;padding:0 40px 0 40px; max-width:750px; margin:0 auto; -webkit-font-smoothing:antialiased; }
 
 
 a			{text-decoration:none; color:#4d7cd6;}
@@ -53,3 +53,5 @@ nav span.next {text-align:right}
 footer {border-top: 1px solid}
 
 nav, footer {font-size: 11px; padding: 10px 0; color:#BFBFBF; border-color:#E5E5E5}
+
+

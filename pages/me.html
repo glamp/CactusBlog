@@ -1,16 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>The Yaksis</h1>
-<h3>Blah blah blah</h3>
-<img src="static/img/theyaksis_graph.png" style="height:80%;width:80%;">
-<ul>
-	{% for post in posts %}
-	<li> 
-		<b><a href='{{ ROOT_URL }}/{{ post.path }}'>{{ post.title }}</a></b>
-		by {{ post.author }} at {{ post.date|date:"F j Y" }}<br>
-		{{ post.body|truncatewords_html:30}}
-	</li>
-	{% endfor %}
-</ul>
+<!-- <img src="static/img/theyaksis_graph.png" style="height:80%;width:80%;">
+ -->
+<h3>Greg Lamp</h3>
+<p>I'm Greg--a product manager at On Deck Capital. I enjoy working with R, Python. I have experience in machine learning, data management,  data warehousing, and web crawling.</p>
+
 
 {% endblock %}

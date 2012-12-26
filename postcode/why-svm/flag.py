@@ -48,7 +48,7 @@ print "Test Set Size: %d" % len(test)
 cols = ["x", "y"]
 
 clfs = {
-    "SVC": svm.SVC(degree=0.5),
+    "SVM": svm.SVC(degree=0.5),
     "Logistic" : linear_model.LogisticRegression(),
     "Decision Tree": tree.DecisionTreeClassifier()
 }

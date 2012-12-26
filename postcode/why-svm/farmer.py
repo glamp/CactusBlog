@@ -53,7 +53,7 @@ df['animal_type'] = df.animal.apply(lambda x: 0 if x=="x" else 1)
 train_cols = ["x", "y"]
 
 clfs = {
-    "SVC": svm.SVC(),
+    "SVM": svm.SVC(),
     "Logistic" : linear_model.LogisticRegression(),
     "Decision Tree": tree.DecisionTreeClassifier(),
 }

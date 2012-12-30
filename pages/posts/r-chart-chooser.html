@@ -1,4 +1,4 @@
-title: R chart chooser
+title: Chart Chooser R port
 author: Greg Lamp
 date: 01-01-2013
 
@@ -10,22 +10,22 @@ date: 01-01-2013
 
 <head>
 <meta charset="utf-8">
+  <link rel="stylesheet" href="../static/css/chartanimations.css">
+  
+  <script type="text/javascript" src="../static/js/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" src="../static/js/jquery.easing.1.3.js"></script>
+  <script type="text/javascript" src="../static/js/jquery.quicksand.js"></script>
+  <script type="text/javascript" src="../static/js/main.js"></script>
 
-<link rel="stylesheet" href="../static/css/chartanimations.css">
-
-<script type="text/javascript" src="../static/js/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="../static/js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="../static/js/jquery.quicksand.js"></script>
-<script type="text/javascript" src="../static/js/main.js"></script>
-
-<title>Simple data filtering using jQuery and Quicksand.js</title>
 </head>
 
 <body>
 
-  <p>This is some placeholder text...blah blah balhblah blah balhblah blah balhblah blah balh
-  blah blah balhblah blah balhblah blah balhblah blah balhblah blah balhblah blah balhblah blah balh
-blah blah balhblah blah balhblah blah balhblah blah balhblah blah balhblah blah balh</p>
+  <p>A few months ago, Juice Labs published an awesome <a href="http://labs.juiceanalytics.com/chartchooser/index.html" target="_blank">Chart Chooser</a> for helping people decide which type of chart or graphic to use in their presentations. The only thing I didn't like about it was that they used Powerpoint and Excel for all of the charts. I use R (specifically ggplot) for presentation graphics, so I thought I would port thier chart chooser over to R. It's sort of a rosetta stone for Excel to R plots.</p>
+  
+  <p>Full disclaimer: I used <a href="http://www.evoluted.net/thinktank/web-development/jquery-quicksand-tutorial-filtering", target="_blank">this</a> tutorial by Stewart Doxey to handle the filtering and animations. It's really easy to follow.</p>
+
+  <p>Before you get started you'll want to install ggplot2 and reshape2 for the plots  and xtable and hwriter for the tables.</p>
 
 <div id="container">
   <ul id="filterOptions">
@@ -43,110 +43,110 @@ blah blah balhblah blah balhblah blah balhblah blah balhblah blah balhblah blah 
       <a href="../static/downloads/03/LineChart.R" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/LineChart.png" alt="LineChart" />
       </a>
-      <h3>Line Chart</h3>
+      <p>Line Chart</p>
     </li>
     <li class="item" data-id="id-2" data-type="comparison distribution composition">
       <a href="../static/downloads/03/BarChart.R" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/BarChart.png" alt="BarChart" />
       </a>
-      <h3>Bar Chart</h3>
+      <p>Bar Chart</p>
     </li>
     <li class="item" data-id="id-3" data-type="comparison composition">
       <a href="../static/downloads/03/StackedBar.R" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/StackedBar.png" alt="StackedBar" />
       </a>
-      <h3>Stacked Bar</h3>
+      <p>Stacked Bar</p>
     </li>
     <li class="item" data-id="id-4" data-type="comparison">
       <a href="../static/downloads/03/BulletBarChart.R" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/BulletBarChart.png" alt="BulletBarChart" />
       </a>
-      <h3>Bullet Bar Chart</h3>
+      <p>Bullet Bar Chart</p>
     </li>
     <li class="item" data-id="id-5" data-type="comparison distribution trend">
       <a href="../static/downloads/03/ColumnChart.R" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/ColumnChart.png" alt="ColumnChart" />
       </a>
-      <h3>Column Chart</h3>
+      <p>Column Chart</p>
     </li>
     <li class="item" data-id="id-6" data-type="comparison trend">
       <a href="../static/downloads/03/StackedColumnChart.R" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/StackedColumnChart.png" alt="StackedColumnChart" />
       </a>
-      <h3>Stacked Column Chart</h3>
+      <p>Stacked Column Chart</p>
     </li>
     <li class="item" data-id="id-6" data-type="comparison trend">
       <a href="../static/downloads/03/StackedColumnPercentageChart.R" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/StackedColumnPercentageChart.png" alt="StackedColumnPercentageChart" />
       </a>
-      <h3>Stacked Column Percentage Chart</h3>
+      <p>Stacked Column Percentage Chart</p>
     </li>
     <li class="item" data-id="id-7" data-type="composition">
       <a href="../static/downloads/03/PieChart.R" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/PieChart.png" alt="PieChart" />
       </a>
-      <h3>Pie Chart</h3>
+      <p>Pie Chart</p>
     </li>
     <li class="item" data-id="id-8" data-type="composition">
       <a href="../static/downloads/03/HighlightedPieChart.R" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/HighlightedPieChart.png" alt="HighlightedPie" />
       </a>
-      <h3>Highlighted Pie</h3>
+      <p>Highlighted Pie</p>
     </li>
     <li class="item" data-id="id-9" data-type="comparison relationship">
       <a href="../static/downloads/03/BubbleChart.R" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/BubbleChart.png" alt="BubbleChart" />
       </a>
-      <h3>Bubble Chart</h3>
+      <p>Bubble Chart</p>
     </li>
     <li class="item" data-id="id-10" data-type="comparison trend">
       <a href="../static/downloads/03/StackedColumnVolumeChart.R" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/StackedColumnVolumeChart.png" alt="StackedColumnVolumeChart" />
       </a>
-      <h3>Stacked Column Volume Chart</h3>
+      <p>Stacked Column Volume Chart</p>
     </li>
     <li class="item" data-id="id-11" data-type="relationship">
       <a href="../static/downloads/03/Scatterplot.R" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/Scatterplot.png" alt="Scatterplot" />
       </a>
-      <h3>Scatterplot</h3>
+      <p>Scatterplot</p>
     </li>
     <li class="item" data-id="id-12" data-type="composition trend">
       <a href="../static/downloads/03/StackedVolumnwLine.R" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/StackedVolumeChartwLine.png" alt="StackedVolumeChartwLine" />
       </a>
-      <h3>Stacked Volume Chart w/ Total Line</h3>
+      <p>Stacked Volume Chart w/ Total Line</p>
     </li>
     <li class="item" data-id="id-13" data-type="trend relationship">
       <a href="../static/downloads/03/ColumnAndLineChart.R" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/ColumnAndLineChart.png" alt="ColumnAndLine" />
       </a>
-      <h3>Colum and Line Chart</h3>
+      <p>Colum and Line Chart</p>
     </li>
     <li class="item" data-id="id-14" data-type="composition">
       <a href="../static/downloads/03/WaterfallChart.R" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/WaterfallChart.png" alt="WaterfallChart" />
       </a>
-      <h3>Waterfall Chart</h3>
-    </li>
-<!--     <li class="item" data-id="id-15" data-type="comparison composition relationship datatable">
-      <a href="../static/downloads/03/AltRowsTable.R" title="Open picture in new window" target="_blank">
-        <img src="../static/img/03/AltRowsTable.png" alt="AltRowsTable" />
-      </a>
-      <h3>Alternating Rows Table</h3>
+      <p>Waterfall Chart</p>
     </li>
     <li class="item" data-id="id-16" data-type="comparison composition relationship datatable">
-      <a href="../static/downloads/03/GroupingsTable.R" title="Open picture in new window" target="_blank">
-        <img src="../static/img/03/GroupingsTable.png" alt="GroupingsTable" />
+      <a href="../static/downloads/03/BasicTable.R" title="Open picture in new window" target="_blank">
+        <img src="../static/img/03/BasicTable.png" alt="BasicTable" />
       </a>
-      <h3>Groupings Table</h3>
+      <p>Basic Table</p>
+    </li>
+    <li class="item" data-id="id-15" data-type="comparison composition relationship datatable">
+      <a href="../static/downloads/03/AlternatingRowsTable.R" title="Open picture in new window" target="_blank">
+        <img src="../static/img/03/AlternatingRowsTable.png" alt="AlternatingRowsTable" />
+      </a>
+      <p>Alternating Rows Table</p>
     </li>
     <li class="item" data-id="id-17" data-type="comparison composition relationship datatable">
       <a href="../static/downloads/03/QuartilesTable.R" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/QuartilesTable.png" alt="QuartilesTable" />
       </a>
-      <h3>Quartiles Table</h3>
-    </li> -->
+      <p>Quartiles Table</p>
+    </li>
   </ul>
 </div>
 

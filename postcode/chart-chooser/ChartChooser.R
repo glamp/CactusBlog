@@ -1,6 +1,6 @@
 
 
-fdir <- "/Users/glamp/repository/blog/CactusBlog/postcode/chart-chooser"
+fdir <- "/Users/glamp/repository/blog/CactusBlog/static/img/03"
 
 library(ggplot2)
 library(reshape2)

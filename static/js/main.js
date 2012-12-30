@@ -29,11 +29,7 @@ $(document).ready(function() {
 		else {
 			// find all li elements that have our required $filterType
 			// values for the data-type element
-			// var $filteredData = $data.find('li[data-type=' + $filterType + ']');
-			console.log($data.find("*"))
-			var $filteredData = $data.find("*").filter(function() {
-				return RegExp($filterType).test($(this).attr("data-type"));
-			});
+			var $filteredData = $data.find('li[data-type~=' + $filterType + ']');
 		}
 		
 		// call quicksand and assign transition parameters

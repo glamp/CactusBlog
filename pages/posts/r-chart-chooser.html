@@ -1,6 +1,6 @@
-title: Juice Labs Chart Chooser R port
+title: Juice Labs Chart Chooser in R
 author: Greg Lamp
-date: 01-01-2013
+date: 30-12-2013
 
 {% extends "post.html" %}
 {% block body %}
@@ -23,12 +23,10 @@ date: 01-01-2013
 
   <p>A few months ago, Juice Labs published an awesome <a href="http://labs.juiceanalytics.com/chartchooser/index.html" target="_blank">Chart Chooser</a> for helping people decide which type of chart or graphic to use in their presentations. The only thing I didn't like about it was that they used Powerpoint and Excel for all of the charts. I use R (specifically ggplot) for presentation graphics, so I thought I would port thier chart chooser over to R. It's sort of a rosetta stone for Excel to R plots.</p>
   
-  <p>Full disclaimer: I used <a href="http://www.evoluted.net/thinktank/web-development/jquery-quicksand-tutorial-filtering", target="_blank">this</a> tutorial by Stewart Doxey to handle the filtering and animations. It's really easy to follow.</p>
+  <p>I used <a href="http://www.evoluted.net/thinktank/web-development/jquery-quicksand-tutorial-filtering", target="_blank">this</a> tutorial by Stewart Doxey to handle the filtering and animations. It's really easy to follow.</p>
 
   <p>Before you get started you'll want to install ggplot2 and reshape2 for the plots  and xtable and hwriter for the tables.</p>
 
-<!--   <p style="font-size: 25px;">Click Chart Name for a larger image. Click image for R code.</p>
- -->
 <div id="container">
   <ul id="filterOptions">
     <li class="active"><a href="#" class="all">All</a></li>
@@ -41,113 +39,113 @@ date: 01-01-2013
   </ul>
   
   <ul class="ourHolder">
-    <li class="item" data-id="id-1" data-type="comparison trend">
-      <a href="../static/downloads/03/LineChart.R" title="Open picture in new window" target="_blank">
-        <img src="../static/img/03/LineChart.png" alt="LineChart" />
-      </a>
-      <p><span><a href="../static/img/03/large/LineChart.png" target="_blank">Line Chart</a></span></p>
-    </li>
-    <li class="item" data-id="id-2" data-type="comparison distribution composition">
-      <a href="../static/downloads/03/BarChart.R" title="Open picture in new window" target="_blank">
+    <li class="item" data-id="id-1" data-type="comparison distribution composition">
+      <a href="../static/img/03/large/BarChart.png" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/BarChart.png" alt="BarChart" />
       </a>
-      <p><span><a href="../static/img/03/large/BarChart.png" target="_blank">Bar Chart</a></span></p>
+      <p><span><a href="../static/downloads/03/BarChart.R" target="_blank">Bar Chart</a></span></p>
+    </li>
+    <li class="item" data-id="id-2" data-type="comparison trend">
+      <a href="../static/img/03/large/LineChart.png" title="Open picture in new window" target="_blank">
+        <img src="../static/img/03/LineChart.png" alt="LineChart" />
+      </a>
+      <p><span><a href="../static/downloads/03/LineChart.R" target="_blank">Line Chart</a></span></p>
     </li>
     <li class="item" data-id="id-3" data-type="comparison composition">
-      <a href="../static/downloads/03/StackedBar.R" title="Open picture in new window" target="_blank">
+      <a href="../static/img/03/large/StackedBar.png" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/StackedBar.png" alt="StackedBar" />
       </a>
-      <p><span><a href="../static/img/03/large/StackedBar.png" target="_blank">Stacked Bar</a></span></p>
+      <p><span><a href="../static/downloads/03/StackedBar.R" target="_blank">Stacked Bar</a></span></p>
     </li>
     <li class="item" data-id="id-4" data-type="comparison">
-      <a href="../static/downloads/03/BulletBarChart.R" title="Open picture in new window" target="_blank">
+      <a href="../static/img/03/large/BulletBarChart.png" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/BulletBarChart.png" alt="BulletBarChart" />
       </a>
-      <p><span><a href="../static/img/03/large/BulletBarChart.png" target="_blank">Bullet Bar Chart</a></span></p>
+      <p><span><a href="../static/downloads/03/BulletBarChart.R" target="_blank">Bullet Bar Chart</a></span></p>
     </li>
     <li class="item" data-id="id-5" data-type="comparison distribution trend">
-      <a href="../static/downloads/03/ColumnChart.R" title="Open picture in new window" target="_blank">
+      <a href="../static/img/03/large/ColumnChart.png" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/ColumnChart.png" alt="ColumnChart" />
       </a>
-      <p><span><a href="../static/img/03/large/ColumnChart.png" target="_blank">Column Chart</a></span></p>
+      <p><span><a href="../static/downloads/03/ColumnChart.R" target="_blank">Column Chart</a></span></p>
     </li>
     <li class="item" data-id="id-6" data-type="comparison trend">
-      <a href="../static/downloads/03/StackedColumnChart.R" title="Open picture in new window" target="_blank">
+      <a href="../static/img/03/large/StackedColumnChart.png" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/StackedColumnChart.png" alt="StackedColumnChart" />
       </a>
-      <p><span><a href="../static/img/03/large/StackedColumnChart.png" target="_blank">Stacked Column Chart</a></span></p>
+      <p><span><a href="../static/downloads/03/StackedColumnChart.R" target="_blank">Stacked Column Chart</a></span></p>
     </li>
-    <li class="item" data-id="id-6" data-type="comparison trend">
-      <a href="../static/downloads/03/StackedColumnPercentageChart.R" title="Open picture in new window" target="_blank">
+    <li class="item" data-id="id-7" data-type="comparison trend">
+      <a href="../static/img/03/large/StackedColumnPercentageChart.png" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/StackedColumnPercentageChart.png" alt="StackedColumnPercentageChart" />
       </a>
-      <p><span><a href="../static/img/03/large/StackedColumnPercentageChart.png" target="_blank">Stacked Column Percentage Chart</a></span></p>
-    </li>
-    <li class="item" data-id="id-7" data-type="composition">
-      <a href="../static/downloads/03/PieChart.R" title="Open picture in new window" target="_blank">
-        <img src="../static/img/03/PieChart.png" alt="PieChart" />
-      </a>
-      <p><span><a href="../static/img/03/large/PieChart.png" target="_blank">Pie Chart</a></span></p>
+      <p><span><a href="../static/downloads/03/StackedColumnPercentageChart.R" target="_blank">Stacked Column Percentage Chart</a></span></p>
     </li>
     <li class="item" data-id="id-8" data-type="composition">
-      <a href="../static/downloads/03/HighlightedPieChart.R" title="Open picture in new window" target="_blank">
+      <a href="../static/img/03/large/PieChart.png" title="Open picture in new window" target="_blank">
+        <img src="../static/img/03/PieChart.png" alt="PieChart" />
+      </a>
+      <p><span><a href="../static/downloads/03/PieChart.R" target="_blank">Pie Chart</a></span></p>
+    </li>
+    <li class="item" data-id="id-9" data-type="composition">
+      <a href="../static/img/03/large/HighlightedPieChart.png" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/HighlightedPieChart.png" alt="HighlightedPie" />
       </a>
-      <p><span><a href="../static/img/03/large/HighlightedPieChart.png" target="_blank">Highlighted Pie Chart</a></span></p>
+      <p><span><a href="../static/downloads/03/HighlightedPieChart.R" target="_blank">Highlighted Pie Chart</a></span></p>
     </li>
-    <li class="item" data-id="id-9" data-type="comparison relationship">
-      <a href="../static/downloads/03/BubbleChart.R" title="Open picture in new window" target="_blank">
+    <li class="item" data-id="id-10" data-type="comparison relationship">
+      <a href="../static/img/03/large/BubbleChart.png" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/BubbleChart.png" alt="BubbleChart" />
       </a>
-      <p><span><a href="../static/img/03/large/BubbleChart.png" target="_blank">Bubble Chart</a></span></p>
+      <p><span><a href="../static/downloads/03/BubbleChart.R" target="_blank">Bubble Chart</a></span></p>
     </li>
-    <li class="item" data-id="id-10" data-type="comparison trend">
-      <a href="../static/downloads/03/StackedColumnVolumeChart.R" title="Open picture in new window" target="_blank">
+    <li class="item" data-id="id-11" data-type="comparison trend">
+      <a href="../static/img/03/large/StackedColumnVolumeChart.png" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/StackedColumnVolumeChart.png" alt="StackedColumnVolumeChart" />
       </a>
-      <p><span><a href="../static/img/03/large/StackedColumnVolumeChart.png" target="_blank">Stacked Column Volume Chart</a></span></p>
+      <p><span><a href="../static/downloads/03/StackedColumnVolumeChart.R" target="_blank">Stacked Column Volume Chart</a></span></p>
     </li>
-    <li class="item" data-id="id-11" data-type="relationship">
-      <a href="../static/downloads/03/Scatterplot.R" title="Open picture in new window" target="_blank">
+    <li class="item" data-id="id-12" data-type="relationship">
+      <a href="../static/img/03/large/Scatterplot.png" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/Scatterplot.png" alt="Scatterplot" />
       </a>
-      <p><span><a href="../static/img/03/large/Scatterplot.png" target="_blank">Scatterplot</a></span></p>
+      <p><span><a href="../static/downloads/03/Scatterplot.R" target="_blank">Scatterplot</a></span></p>
     </li>
-    <li class="item" data-id="id-12" data-type="composition trend">
-      <a href="../static/downloads/03/StackedVolumnwLine.R" title="Open picture in new window" target="_blank">
+    <li class="item" data-id="id-13" data-type="composition trend">
+      <a href="../static/img/03/large/StackedVolumeChartwLine.png" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/StackedVolumeChartwLine.png" alt="StackedVolumeChartwLine" />
       </a>
-      <p><span><a href="../static/img/03/large/StackedVolumeChartwLine.png" target="_blank">Stacked Volume Chart w/ Total Line</a></span></p>
+      <p><span><a href="../static/downloads/03/StackedVolumnwLine.R" target="_blank">Stacked Volume Chart w/ Total Line</a></span></p>
     </li>
-    <li class="item" data-id="id-13" data-type="trend relationship">
-      <a href="../static/downloads/03/ColumnAndLineChart.R" title="Open picture in new window" target="_blank">
+    <li class="item" data-id="id-14" data-type="trend relationship">
+      <a href="../static/img/03/large/ColumnAndLineChart.png" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/ColumnAndLineChart.png" alt="ColumnAndLine" />
       </a>
-      <p><span><a href="../static/img/03/large/ColumnAndLineChart.png" target="_blank">Colum and Line Chart</a></span></p>
+      <p><span><a href="../static/downloads/03/ColumnAndLineChart.R" target="_blank">Colum and Line Chart</a></span></p>
     </li>
-    <li class="item" data-id="id-14" data-type="composition">
-      <a href="../static/downloads/03/WaterfallChart.R" title="Open picture in new window" target="_blank">
+    <li class="item" data-id="id-15" data-type="composition">
+      <a href="../static/img/03/large/WaterfallChart.png" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/WaterfallChart.png" alt="WaterfallChart" />
       </a>
-      <p><span><a href="../static/img/03/large/WaterfallChart.png" target="_blank">Waterfall Chart</a></span></p>
+      <p><span><a href="../static/downloads/03/WaterfallChart.R" target="_blank">Waterfall Chart</a></span></p>
     </li>
     <li class="item" data-id="id-16" data-type="comparison composition relationship datatable">
-      <a href="../static/downloads/03/BasicTable.R" title="Open picture in new window" target="_blank">
+      <a href="../static/img/03/large/BasicTable.html" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/BasicTable.png" alt="BasicTable" />
       </a>
-      <p><span><a href="../static/img/03/large/BasicTable.html" target="_blank">Basic Table</a></span></p>
-    </li>
-    <li class="item" data-id="id-15" data-type="comparison composition relationship datatable">
-      <a href="../static/downloads/03/AlternatingRowsTable.R" title="Open picture in new window" target="_blank">
-        <img src="../static/img/03/AlternatingRowsTable.png" alt="AlternatingRowsTable" />
-      </a>
-      <p><span><a href="../static/img/03/large/AlternatingRowsTable.html" target="_blank">Alternating Rows Table</a></span></p>
+      <p><span><a href="../static/downloads/03/BasicTable.R" target="_blank">Basic Table</a></span></p>
     </li>
     <li class="item" data-id="id-17" data-type="comparison composition relationship datatable">
-      <a href="../static/downloads/03/QuartilesTable.R" title="Open picture in new window" target="_blank">
+      <a href="../static/img/03/large/AlternatingRowsTable.html"title="Open picture in new window" target="_blank">
+        <img src="../static/img/03/AlternatingRowsTable.png" alt="AlternatingRowsTable" />
+      </a>
+      <p><span><a href="../static/downloads/03/AlternatingRowsTable.R"  target="_blank">Alternating Rows Table</a></span></p>
+    </li>
+    <li class="item" data-id="id-18" data-type="comparison composition relationship datatable">
+      <a href="../static/img/03/large/QuartilesTable.html" title="Open picture in new window" target="_blank">
         <img src="../static/img/03/QuartilesTable.png" alt="QuartilesTable" />
       </a>
-      <p><span><a href="../static/img/03/large/QuartilesTable.html" target="_blank">Quartiles Table</a></span></p>
+      <p><span><a href="../static/downloads/03/QuartilesTable.R" target="_blank">Quartiles Table</a></span></p>
     </li>
   </ul>
 </div>

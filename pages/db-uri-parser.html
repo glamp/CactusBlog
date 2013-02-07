@@ -1,0 +1,66 @@
+title: Database URI Parser
+author: Greg Lamp
+date: 15-01-2013
+
+{% extends "post.html" %}
+{% block body %}
+
+{% load markup %}
+{% filter markdown %}
+
+<head>
+<meta charset="utf-8">  
+  <script type="text/javascript" src="../static/js/uriparser.js"></script>
+  <script type="text/javascript" src="../static/js/jquery-1.8.3.min.js"></script>
+<a href="https://github.com/you"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+</head>
+
+<body>
+  <p>blah blah blah</p>
+
+  <p>Works for MongoDB, Redis, MySQL, and Postgres</p>
+
+<nav>
+<button id="pg"    style="padding: 15px;">Postgres</button>
+<button id="mysql" style="padding: 15px;">MySQL</button>
+<button id="mongo" style="padding: 15px;">MongoDB</button>
+<button id="redis" style="padding: 15px;">Redis</button>
+</nav>
+<form id='db-uri'>
+<input type="text" id="uri" style="font-weight:normal;padding:10px;border-radius:6px;height:35px;width:900px;font-size:20px;" placeholder="" value="mongodb://me:password1234@mongohq.com:12345/mydb">
+</form>
+<pre id="cmd-output" style="width:900px;height:40px;background-color:black;color:white;">
+PRESS ENTER
+</pre>
+
+</body>
+
+{% endfilter %}
+<script type="text/javascript">
+  $("#db-uri").submit(function(e) {
+    var uri = $("#uri").val();
+    $("#cmd-output").text(parseURI(uri));
+    return false;
+  });
+  $("#pg").click(function(e) {
+    var uri = $("#uri").val(postgresExample);
+    $("#db-uri").submit()
+    return false;
+  });
+  $("#mongo").click(function(e) {
+    var uri = $("#uri").val(mongoExample);
+    $("#db-uri").submit()
+    return false;
+  });
+  $("#mysql").click(function(e) {
+    var uri = $("#uri").val(mysqlExample);
+    $("#db-uri").submit()
+    return false;
+  });
+  $("#redis").click(function(e) {
+    var uri = $("#uri").val(redisExample);
+    $("#db-uri").submit()
+    return false;
+  });
+</script>
+{% endblock %}

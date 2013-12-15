@@ -1,0 +1,65 @@
+title: CoffeeScript for R
+author: Greg Lamp
+date: 20-12-2013
+
+{% extends "post.html" %}
+{% block body %}
+
+{% load markup %}
+{% filter markdown %}
+
+### Syntax
+Something that I've always found interesting is the similarity between Javascript
+and R. Syntacticly they're very similar.
+
+Take the following implentation of fibonacci. This is 100% valid in both 
+Javascript and R.
+
+<pre>
+fib = function(n) {
+  if (n==0) {
+    return (0)
+  } else if (n==1) {
+    return (1)
+  } else {
+    return (fib(n-1) + fib(n-2))
+  }
+}
+</pre>
+
+In addition they share a lot of the same intricacies surrounding OOP. OOP isn't
+something that comes very natural in either R or Javascript, but it's something
+that people tend to want. As a result, they find ways to force OOP into the 
+language. Whether it's `prototype` in Javascript, or `ReferenceClasses` in R, 
+they're both going for the same thing.
+
+### Why the suffering?
+So if these Javascript is so horrible, why is it so popular? Well you don't 
+really have any other choice, right? If you want to do cool stuff in the browser,
+at some point you've got to suck it up and write some Javascript. I think the 
+same could be said for R, substituting data analysis for UI. While there are other
+languages that you can use for data analysis, none have the breadth and scope of
+R.
+
+### CoffeeScript to the rescue
+One reason that Javascript has been able to overcome some of the syntactic pundits
+has been [CoffeeScript](http://coffeescript.org/). CoffeeScript is a language that
+compiles into JavaScript. It provides some syntactic sugar on top of JavaScript
+that makes it a lot easier to look at. Things like:
+
+- fewer brackets 
+- better OOP
+- improved iteration
+- improved string functionality
+- easier arrays
+
+Bascially it's less typing and easier on the eyes.
+
+### CoffeeScript meets R
+So maybe you can see where I'm going with this. But what if we could leverage all
+of the functionality and depth of R but provide a less prickly way to interact 
+with the language? Something that could make R easier to learn and more fun to 
+debug?
+
+{% endfilter %}
+{% endblock %}

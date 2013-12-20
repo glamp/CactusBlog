@@ -8,20 +8,63 @@ date: 01-01-2014
 {% load markup %}
 {% filter markdown %}
 
-## Topic
-blah blah blah...
+`vowpal_wabbit`, or `vw`, is an online learning program built by
+[Yahoo! Research](http://). It's fairly basic to use, it's essentially a command
+line tool and it's mostly written in C++. Even the [website](http://hunch.net/) 
+is super simple.
 
-## Topic
-blah blah blah...
+Using `vw` basically maxes out your data science [cheaupaux](). It's like not 
+wearing a mask in hockey, or having lift tickets from 3 foreign countries on 
+your ski jacket. Yeah, it's that cool.
 
-## Topic
-blah blah blah...
+<img src="{{ STATIC_URL }}/img/cheaupaux.png" stlye="display: block;">
 
-## Topic
-blah blah blah...
+*another activity that yields high cheapaux points*
 
-## Topic
-blah blah blah...
+### So it's cool, but what is it?
+
+`vw` was designed with the following in mind:
+
+- one
+- two
+- three
+- four
+
+
+I've always thought of `vw` as being a "data scientist's data scientist's tool".
+ It's one of those technologies where in order to get anything out of it you 
+have to know what you're doing.
+
+<img src="{{ STATIC_URL }}/img/vw-help.png" stlye="display: block;">
+
+*You better know what you're getting into*
+
+
+### Sort of like redis
+It actually reminds me a lot of [`redis`](http://redis.io/). redis is one of
+those tools that never fails to get engineers excited. My take on it is that
+it's so simple yet powerful that it's sort of a test of an engineer's true
+skill.
+
+I see the exact same sort of reaction from data scientists when talking about
+`vw`. *Finally! A chance to show off my math!*
+
+<img src="{{ STATIC_URL }}/img/redis-logo.png" stlye="display: block;">
+
+### What's it look like?
+Installing `vw` requires you to use `make`. It'll blast through a bunch of C++
+and leave you with the `vw` command. Now there have been clients written in 
+other programming languages like [`vowpal_porpoise`](link/here), but the 
+traditionalist in me loves using `vw` in its purist form.
+
+    # insert code snippets here
+    $ vw --adaptive -p /dev/stdout
+
+### Training
+
+### Making Predictions
+
+
 
 {% endfilter %}
 {% endblock %}

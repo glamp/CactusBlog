@@ -8,24 +8,19 @@ date: 20-12-2013
 {% load markup %}
 {% filter markdown %}
 
-### Syntax
-Something that I've always found interesting is the similarity between Javascript
-and R. Syntacticly they're very similar.
+Have you ever noticed how similar R and JavaScript are? It's shocking given how 
+different they are in terms of functionality, but it's true. Take a look at this
+function. This is 100% valid in both Javascript and R.
 
-Take the following implentation of fibonacci. This is 100% valid in both 
-Javascript and R.
-
-<pre>
-fib = function(n) {
-  if (n==0) {
-    return (0)
-  } else if (n==1) {
-    return (1)
-  } else {
-    return (fib(n-1) + fib(n-2))
-  }
-}
-</pre>
+    fib = function(n) {
+      if (n==0) {
+        return (0)
+      } else if (n==1) {
+        return (1)
+      } else {
+        return (fib(n-1) + fib(n-2))
+      }
+    }
 
 In addition they share a lot of the same intricacies surrounding OOP. OOP isn't
 something that comes very natural in either R or Javascript, but it's something
@@ -33,19 +28,23 @@ that people tend to want. As a result, they find ways to force OOP into the
 language. Whether it's `prototype` in Javascript, or `ReferenceClasses` in R, 
 they're both going for the same thing.
 
-### Why the suffering?
-So if these Javascript is so horrible, why is it so popular? Well you don't 
-really have any other choice, right? If you want to do cool stuff in the browser,
-at some point you've got to suck it up and write some Javascript. I think the 
-same could be said for R, substituting data analysis for UI. While there are other
-languages that you can use for data analysis, none have the breadth and scope of
-R.
+### Why the complaints?
+R and JavaScript catch a lot of heat for thier syntax. Whether it's the 6 
+differnet ways to do variable assignment in R, or the psuedo-optional semicolons
+in JavaScript, they both definitely have thier quirks.
+
+    # Yes...these all do the same thing
+    assign("x", 1)
+    x = 1
+    x <- 1
+    1 -> x
+
 
 ### CoffeeScript to the rescue
-One reason that Javascript has been able to overcome some of the syntactic pundits
-has been [CoffeeScript](http://coffeescript.org/). CoffeeScript is a language that
-compiles into JavaScript. It provides some syntactic sugar on top of JavaScript
-that makes it a lot easier to look at. Things like:
+One reason that Javascript has been able to overcome some of the syntactic
+pundits has been [CoffeeScript](http://coffeescript.org/). CoffeeScript is a 
+language that compiles into JavaScript. It provides some syntactic sugar on top
+of JavaScript that makes it a lot easier to look at. Things like:
 
 - fewer brackets 
 - better OOP
@@ -56,10 +55,151 @@ that makes it a lot easier to look at. Things like:
 Bascially it's less typing and easier on the eyes.
 
 ### CoffeeScript meets R
-So maybe you can see where I'm going with this. But what if we could leverage all
-of the functionality and depth of R but provide a less prickly way to interact 
-with the language? Something that could make R easier to learn and more fun to 
-debug?
+So maybe you can see where I'm going with this. But what if we could leverage
+all of the functionality and depth of R but provide a less prickly way to
+interact with the language?
+
+I've written a spec for ["CoffeeScript for R"](https://github.com/glamp/coffee-script-for-r/)
+. Here are some ideas (everything subject to change!)...
+
+#### Variable Assignment
+Only accept `=`
+
+#### Data Frames
+Allow "dot" access to columns
+
+    df = data.frame(x=1:100, y=1:100)
+    df.one = 1
+
+
+Less verbose subsetting and selecting of data
+
+    df[x > 100, ]
+    df[x > 100 & y < 10, ]
+    df[, ['x', 'y']]
+    df[x > 100, ['x', 'y']]
+
+Ability to slice with or without begining/ending index
+
+    df[1:,]
+    df[:10,]
+
+
+Negative Indexing
+
+    # returns last 10 rows of data frame
+    df[-10:-1,]
+
+Plus equals, times equals, etc.
+
+    df.one *= -1
+    df.one /= -1
+    df.one == -1
+
+#### Scoping
+Allow scope to be defined by indentation instead of brackets
+
+    for i in 1:100:
+        print(i)
+
+#### Looping
+For loops should be more arbitrary like Python or Ruby
+
+    for i in seq(1, 100):
+        print(i)
+
+Sequences like Ruby
+
+    for i in 0..100:
+        print(i)
+
+#### Lists
+Define true lists as you would in Python or Ruby. Lists should be able
+to take arbitrary types but should have a type. So something with strings
+and list would become an object but you can still operate the column.
+
+    myList = [1, 2, 3]
+
+#### Dicts
+A dictionary like Python or Ruby. Simple key/value pairs.
+
+    x = {"one": 1, "two": 2, "three": "We're really doing it Harry!"}
+    x['one']
+
+#### Functions
+Slightly more sugary function definition. Also need to figure out what `...` does
+and then make it easier to use.
+
+    function hello():
+      return "Hello, Greg!"
+
+#### Classes
+More sane class structures. Allow users to define classes with properties, 
+initializers, etc.
+
+    class MyObject:
+      function init(something):
+        this.something = something
+      function equals(aMyObject):
+        return this.something==aMyObject.something
+      function hello(name):
+        print("Hello!", name)
+
+    class MyOtherObject(MyObject):
+      function say_what():
+        print("say what!?!")
+
+Creating objects should be like Ruby/Python.
+
+    myObj = MyObject("something wicked")
+
+#### Docstrings
+Docstring support like Python for functions and classes.
+
+    function hello(somebody):
+      """
+      Says hello to somebody
+
+      params:
+        somebody - someone who wants to be greeted
+      """
+      return "Hello! " + somebody
+
+#### Package Manager
+R needs a better package manager. CRAN is great until it's a pain. A less 
+stringent, easier to use package manager could really help. Peole are already
+thinking about this [packrat](https://github.com/rstudio/packrat) and I'm seeing
+more and more R packages NOT distributed on CRAN in favor of just using github
+in conjunction with `devtools::install_github`.
+
+    $ rpm install foo
+    $ rpm freeze > packages.txt
+    $ rpm install packages.txt
+
+#### Strings and output
+Strings in R are totally bizarre. You should be able to concatenate strings by
+adding them together. Adding a string with a non-string (a number) should invoke
+the `toString()` on the non-string and add them together.
+
+    'x' + 'y' =='xy'
+
+Printing also needs to do what you think it should. 
+
+    print("hello", "greg")
+    # hello greg
+
+Block string support
+
+    x = """this
+    is
+    a
+    multi-line
+    string
+    """
+
+### Want to help?
+If anyone is interested in working on the project or being a pilot user, drop
+me a line at [lamp.greg@gmail.com](mailto:lamp.greg@gmail.com).
 
 {% endfilter %}
 {% endblock %}

@@ -1,4 +1,4 @@
-title: 6 reasons you'll still be using R in 5 years
+title: 6 reasons R isn't going anywhere
 author: Greg Lamp
 date: 13-12-2013
 
@@ -27,31 +27,63 @@ think that `ggplot2` is the only thing keeping you using R.
 Like many people, I came across Matt Asay's [article](http://readwrite.com/2013/11/25/python-displacing-r-as-the-programming-language-for-data-science)
 a few weeks ago on HackerNews. It's a great article, and I think the two
 strongest arguments were:
+
 - R is a pain in tough to learn
 - Python is general purpose, wheras R is a specialist's language
 
 ### R is still cutting edge
-TODO: blah blah blah
+So I'm not really sure how this one goes unnoticed, but despite the bitching 
+about the syntax, R is still a cutting edge tool with millions of users.
+
+<img src="{{ STATIC_URL }}/img/INSERT_PICTURE.png" style="height: 250px; display: block;">
 
 ### Time
-TODO: blah blah blah
+R isn't new. It's been around for about 20-30 years. It's not just going to go
+away overnight.
 
-### The voice of the internet is not driven by the majority of users
-TODO: blah blah blah
+- There are 3,000+ packages on [CRAN](http://cran.rproject.org). You can find
+niche, hyper-specific packages that fit your particular need.
+- Large organizations using R aren't going to make "the switch" overnight. Many
+companies are *just now* escaping the death grip that `SAS` (the programming 
+langauge, not [SaaS](http://en.wikipedia.org/software-as-a-service)). These are
+the  entities that constitutue a large portion of the user base, despite not
+having a very large voice. If and when these types of organizations move away 
+from R, it's going to take time happen (on the order of multiple years).
+
+### RStudio > IPython Notebook
+The IPython Notebook is great for presentations and tutorials, but when it comes
+to an actual analytical IDE, it's hard to beat [Rstudio](http://www.rstudio.org)
+. It looks great, is fast, and is __the best__ web based app I have used. It
+actually feels the same as using it on your local computer.
+
+### How many people are *actaully* switching?
+If you read [Hacker News](http://news.ycombinator.com/) or
+[/r/programming](http://reddit.com/r/programming), you're most likely being
+over-exposed to tech that is "cool" but not neccessarily mainstream. I call this
+__GO syndrome__. 
+
+Just think about how many B and C level R programmers are out there. They're not
+the sort of people who are considering moving to Python because there's a better
+version of RandomForest. 
 
 ### Because Hadley Wickham will be
-[Advanced R Programming](http://adv-r.had.co.nz/) is going to help make `R` more accessible. 
-Previously, the best documentation for building `R` packages was found [here](http://cran.r-project.org/doc/manuals/R-exts.html).
-Functional? Yes. Thurough? You bet. Helpful? Maybe. Easy to follow? Absolutely
-not.
+R's fearless leader. Mr. Wickham has built `plyr`, `stringr`, and most
+notably, `ggplot2`. It's a laundry list of functionality that *should* exist in
+base R, but doesn't.
 
-Hadley Wickham's new book will hopefully make it a lot easier for the "average R
-user" to make the leap to "advanced R user".
+I'm also excited about [Advanced R Programming](http://adv-r.had.co.nz/). I
+think it will help make package development in `R` more accessible to the 
+typical R user. Previously, the best documentation for building `R` packages
+was found [here](http://cran.r-project.org/doc/manuals/R-exts.html). Functional?
+Yes. Thurough? You bet. Helpful? Maybe. Easy to follow? Absolutely not.
+
+I have no doubt that the R community continue to benefit for Mr. Wickham's
+generosity in the years to come.
 
 <img src="{{ STATIC_URL }}/img/hadley.png" style="height: 150px; display: block;">
 *Photo of Mr Wickham, courtesy gravatar*
 
-### Pydata is dicking around
+### Pydata is confused
 Pydata is the non-profit wing of Continuum Analytics. It essentially gives them
 a seperate avenue for raising money via donations and grants by which they can 
 pay developers to work on open source/government projects. In concept, I think
@@ -61,18 +93,25 @@ disappointed in the tools that have come out of the program:
 - [`Bokeh`](https://github.com/ContinuumIO/bokeh) takes dependency hell to a 
 different level. As I'm reading the dependencies list, it seems like 10 
 engineers were put in a room and just starting listing technologies and concepts
-that they thought were cool. In addition it's supposed to be an implementation of
-the grammar of graphics as well, though it really just looks like `matplotlib`.
-- Seriously, who uses [`Numba`](http://numba.pydata.org/)?
+that they thought were cool. In addition it's supposed to be an implementation
+of the grammar of graphics as well, though it really just looks like
+`matplotlib`.
+- [`Numba`](http://numba.pydata.org/) Seriously, who uses this?
 - [`Blaze`](http://blaze.pydata.org/) is entering shit or get off the pot
-territory. It sounds nice (next gen `numpy`) but I haven't heard much about 
-it since it was accounced about a year ago. The other problem is that `pandas`
-(which is how people *actually* interact with their data) has already captured
-*considerable* marketshare. So if `Blaze` were really to be of use, a lot of the
-under-the-hood aspects of `pandas` would probably need to be redone.
+territory. It sounds sweet (next gen `numpy`) but I don't think it's going to be
+relevant for a long time. `numpy` only got popular once we were given `pandas`. 
+The fact of the matter is people like their data in rectangles--Excel, data 
+frames in R and `pandas`. So in order for `Blaze` to be of use to the average
+data scientist, `Blaze` is going to need a pandas-esque counterpart.
 
 
-### Conclusion
+### Final Thoughts
+
+- R is easy to install
+- You can do __a lot__ in base R
+- Most analysts don't want a gernal purpose language (or at least don't know
+they *should* want one)
+
 <img src="{{ STATIC_URL }}/img/southpark_general.jpg" style="height: 250px; display: block">
 *I've got news for you, Mr. Scientist* 
 

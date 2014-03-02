@@ -70,7 +70,7 @@ installed. You can run `brew install --without-python boost` if you're on OSX.
 
 Now there have been clients written in other programming languages
 like [`vowpal_porpoise`](https://github.com/josephreisinger/vowpal_porpoise),
-but the pursist in me loves using `vw` in its true form.
+but the purist in me loves using `vw` in its true form.
 
 
 ### Data
@@ -80,11 +80,11 @@ to a csv.
     
     $ Rscript -e "write.csv(iris, stdout(), row.names=F)" > iris.csv
 
-To conintue with the command line theme, I'm going to use `awk`, `sed`, `cat`,
+To continue with the command line theme, I'm going to use `awk`, `sed`, `cat`,
 and `tail` to clean my data. The format that `vw` takes is a little dated. It's
 JSON-esque, but looks like this:
     
-__ *class label* *optional id* | *"feature1 label"*: *value* *"feature2 label"*: *value* ...  *"featureN label"*: *value*__
+`label` | `feature1: value` `feature2: value` `feature3: value` ... `featureN: value`
 
     $ tail -n+2 \ 
       | sed 's/"virginica"/1/g' \ 
@@ -114,7 +114,7 @@ analysis from the command line. It looks like it should be good!
 ### Training
 is pretty straightforward. Give it some data with a label and `vw` will
 start learning. There are __a lot__ of configuration options for `vw`, including
-things like neural newtorks, logistic regression, and stochastic gradient 
+things like neural networks, logistic regression, and stochastic gradient 
 descent. Configuration options are specified as command line arguments. For now,
 we'll go with a fairly vanilla setting.
 

@@ -8,33 +8,31 @@ date: 01-03-2014
 {% load markup %}
 {% filter markdown %}
 
-`vowpal_wabbit`, or `vw`, is an online learning program built by
-[Yahoo! Research](http://). It's fairly basic to use, it's essentially a command
-line tool and it's mostly written in C++. Even the [website](http://hunch.net/) 
-is super simple.
+`vowpal_wabbit`, or `vw`, is an online learning program originally built by
+Yahoo! Research (now [Microsoft Research](http://research.microsoft.com/en-us/))
+. It's fairly basic to use, it's a command line tool and it's mostly written in
+C++. Even the [website](http://hunch.net/~vw/) has a great Web 1.0 feel to it.
 
-Using `vw` basically maxes out your data science [cheaupaux](). It's like not 
-wearing a mask in hockey, or having lift tickets from 3 foreign countries on 
-your ski jacket. Yeah, it's that cool.
+Using `vw` basically maxes out your data science [style points](http://www.urbandictionary.com/define.php?term=style+points).
+It's like not wearing a mask in hockey, or having lift tickets from 3 foreign 
+countries on your ski jacket. Yeah, it's that cool.
 
-![cheaupaux football]({{ STATIC_URL }}/img/cheaupaux.png)
+<img src="{{ STATIC_URL }}/img/freddy-couples.jpg" style="height: 350px;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{{ STATIC_URL }}/img/gary-gaetti-no-earflap.jpg" style="height: 300px">
 
-*A sports player demonstrating exceptionally high cheaupaux*
+*Fred Couples -- No glove. Red pants. Matching bag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gary Gaetti going sans-earflaps __17 years after it was made illegal__*
 
 
-![cheapeaux skiing]({{ STATIC_URL }}/img/cheaupaux.png)
-
-*Another activity that yields high cheapaux points*
 
 ### So it's cool, but what is it?
 
 `vw` was designed with the following in mind:
 
-- one
-- two
-- three
-- four
-
+- be fast, scalable, and efficient
+- support new algorithms and ongoing research
+- dead drop simple
 
 I've always thought of `vw` as being a "data scientist's data scientist's tool".
  It's one of those technologies where in order to get anything out of it you 
@@ -56,26 +54,24 @@ skill.
 I see the exact same sort of reaction from data scientists when talking about
 `vw`. *Finally! A chance to show off my math!*
 
-![]({{ STATIC_URL }}/img/redis-logo.png)
+<img src="{{ STATIC_URL }}/img/redis-logo.png" style="height: 200px;">
 
 ### What's it look like?
 So `vw` is basically a `stdin` / `stdout` cookie monster. You run it from the
 shell and feed it a JSON-esque data structure and it pukes predictions back out
 at you. Pretty? No. Simple and easy to use? You bet!
 
+<img src="{{ STATIC_URL }}/img/stdin-cookie-monster.jpg" style="height: 350px">
+
+
 Installing `vw` requires you to use `make`. It'll blast through a bunch of C++
-and leave you with the `vw` command. Just make sure you have the [C++ boost lib](link/to-boost/)
-installed. Now there have been clients written in other programming languages
-like [`vowpal_porpoise`](link/here), but the pursist in me loves using
-`vw` in its true form.
+and leave you with the `vw` command. Just make sure you have the [C++ boost lib](http://www.boost.org/)
+installed. You can run `brew install --without-python boost` if you're on OSX.
 
-### Training
-Training is pretty straightforward. Give it some data with a label and `vw` will
-start learning. There are __a lot__ of configuration options for `vw`, including
-things like neural newtorks, blah, and blah. Configuration options are specified
-as command line arguments. For now, we'll go with a fairly vanilla setting.
+Now there have been clients written in other programming languages
+like [`vowpal_porpoise`](https://github.com/josephreisinger/vowpal_porpoise),
+but the pursist in me loves using `vw` in its true form.
 
-    $ vw --oaa 3 -d 
 
 ### Data
 Since `vw` is an esoteric enough already, we're going to keep the dataset simple
@@ -90,14 +86,10 @@ JSON-esque, but looks like this:
     
 __ *class label* *optional id* | *"feature1 label"*: *value* *"feature2 label"*: *value* ...  *"featureN label"*: *value*__
 
-    $ tail -n+2 | sed 's/"virginica"/1/g' | sed 's/"setosa"/2/g' | sed 's/"versicolor"/3/g' > iris_numerical.csv
-    # looks like this...
-    # 5.1,3.5,1.4,0.2,2
-    # 4.9,3,1.4,0.2,2
-    # 4.7,3.2,1.3,0.2,2
-    # 4.6,3.1,1.5,0.2,2
-    # 5,3.6,1.4,0.2,2
-    # ...
+    $ tail -n+2 \ 
+      | sed 's/"virginica"/1/g' \ 
+      | sed 's/"setosa"/2/g' \ 
+      | sed 's/"versicolor"/3/g' > iris_numerical.csv
     $ cat iris_numerical.csv | awk -F, '{ print($5 " |" "sepal_length:" $1 " speal_width:" $2 " petal_length:" $3 " petal_width:" $4)}' > iris.dat
     $ head iris.dat
     2 |sepal_length:5.1 speal_width:3.5 petal_length:1.4 petal_width:0.2
@@ -113,13 +105,24 @@ __ *class label* *optional id* | *"feature1 label"*: *value* *"feature2 label"*:
 
 Ok so it's weird, but it's fast and it works and it's easy to follow! By using 
 age old bash commands you're ensuring yourself of keeping out of the ongoing 
-[R vs Python War](link goes here) and just about anyone worth their salt can 
-follow along.
+[R vs Python War](http://readwrite.com/2013/11/25/python-displacing-r-as-the-programming-language-for-data-science#awesm=~oxiIhyAMjMyy5e)
+and just about anyone worth their salt can follow along.
 
-Jerone Jennsen is actually [writing a book](link to book) about doing data 
+Jerone Janssens is actually [writing a book](http://jeroenjanssens.com/2013/12/07/lean-mean-data-science-machine.html) about doing data 
 analysis from the command line. It looks like it should be good!
 
 ### Training
+is pretty straightforward. Give it some data with a label and `vw` will
+start learning. There are __a lot__ of configuration options for `vw`, including
+things like neural newtorks, logistic regression, and stochastic gradient 
+descent. Configuration options are specified as command line arguments. For now,
+we'll go with a fairly vanilla setting.
+
+    $ vw --oaa 3 # don't run this just yet!
+
+`--oaa 3` means we'll be doing one-against-all multiclass learning with 3 
+possible labels.
+
 You have a couple of options for how you can use `vw`. One is to use good 'ole 
 stdin/stdout. Just puke your data to stdout and then let `vw` eat it all up (in
 that regard I supposed it's sort of like a good dog).
@@ -171,12 +174,20 @@ So you can train a model on your data, but how do you make predictions? Well
 that's pretty easy too. Just feed `vw` some more data and ask nicely using the 
 `-p` argument. If you'd like predictions to go to a file, just pass a filename. 
 If you just want to print them back out to the terminal, then pass it 
-/dev/stdout.
+`/dev/stdout`.
 
     $ vw -d iris.dat -f iris.model -p iris.preds
     $ vw -d iris.dat -f iris.model -p /dev/stdout
-    # the diagnostics can get a little annoying
+    # the diagnostics can get a little annoying; use --quiet to supress them
     $ vw -d iris.dat -f iris.model -p /dev/stdout --quiet
+
+### Mix in a little `bashplotlib`
+I couldn't resist. I just had to get [`bashplotlib`](/posts/bashplotlib.html) 
+into the mix.
+
+    $ vw -d iris.dat -f iris.model -p /dev/stdout --quiet | hist
+<img src="{{ STATIC_URL }}/img/vw-bashplot.png" style="height: 500px">
+
 
 ### Wrap Up
 I have barely scratched the surface of what `vw` can do. I'll be the first one 
@@ -189,10 +200,9 @@ future post.
 
 If you're looking for more `vw` resources, check these out:
 
-- one
-- two
-- three
-- four
+- [hunch.net](http://hunch.net/~vw/)
+- [Tutorial from John Langford](https://github.com/JohnLangford/vowpal_wabbit/wiki/v7.0_tutorial.pdf)
+- [Video Tutorial](http://www.youtube.com/watch?v=q_BjcopyHq0)
 
 {% endfilter %}
 {% endblock %}

@@ -26,16 +26,129 @@
 	  })();
 
 	</script>
-	<script>
-	  var _mt = _mt || {};
-	  _mt.apikey = 'kAV6YJ1y';
-	  (function() {
-	    var mt = document.createElement('script');
-	    mt.type = 'text/javascript';mt.async = true;
-	    mt.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cf.yhathq.com/moontower.min.js';
-	    var s = document.getElementsByTagName('script');var l = s[s.length - 1];l.parentNode.insertBefore(mt, l.nextSibling);
-	  })();
-	</script>
+    <script>
+      var _mt = _mt || {};
+      _mt.apikey = 'NX9aRz50';
+      (function() {
+
+      var pages = {
+          "/posts/r-packages.html": [
+            "../static/img/mryak.png"
+          ],
+          "/": [
+            "./static/img/theyaksis_graph.png"
+          ],
+          "ncaa-win-probs.html": [],
+          "new-post-template.html": [
+            "./static/img/mryak.png"
+          ],
+          "me.html": [],
+          "/posts/bashplotlib.html": [
+            "../static/img/mryak.png",
+            "../static/img/04/million.png",
+            "../static/img/04/scatter.png",
+            "../static/img/04/texas.png",
+            "../static/img/04/payrolls.png",
+            "../static/img/04/usa.png"
+          ],
+          "/posts/coffeescript-for-r.html": [
+            "../static/img/mryak.png"
+          ],
+          "db-uri-parser.html": [
+            "./static/img/mryak.png",
+            "https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+          ],
+          "/posts/r-chart-chooser.html": [
+            "../static/img/mryak.png",
+            "../static/img/03/BarChart.png",
+            "../static/img/03/LineChart.png",
+            "../static/img/03/StackedBar.png",
+            "../static/img/03/BulletBarChart.png",
+            "../static/img/03/ColumnChart.png",
+            "../static/img/03/StackedColumnChart.png",
+            "../static/img/03/StackedColumnPercentageChart.png",
+            "../static/img/03/PieChart.png",
+            "../static/img/03/HighlightedPieChart.png",
+            "../static/img/03/BubbleChart.png",
+            "../static/img/03/StackedColumnVolumeChart.png",
+            "../static/img/03/Scatterplot.png",
+            "../static/img/03/StackedVolumeChartwLine.png",
+            "../static/img/03/ColumnAndLineChart.png",
+            "../static/img/03/WaterfallChart.png",
+            "../static/img/03/BasicTable.png",
+            "../static/img/03/AlternatingRowsTable.png",
+            "../static/img/03/QuartilesTable.png"
+          ],
+          "/posts/why-use-svm.html": [
+            "../static/img/mryak.png",
+            "../static/img/02/cows_and_wolves.png",
+            "../static/img/02/flag.png"
+          ],
+          "/posts/ncaa-win-probs.html": [
+            "../static/img/mryak.png",
+            "../static/img/minutes-left-39.png",
+            "../static/img/minutes-left-20.png",
+            "../static/img/minutes-left-10.png",
+            "../static/img/minutes-left-1.png",
+            "../static/img/uva-win-prob.png"
+          ],
+          "/posts/6-reasons-r-isnt-going-anywhere.html": [
+            "../static/img/mryak.png",
+            "../static/img/nnet.png",
+            "../static/img/r-packages.png",
+            "../static/img/rstudio.png",
+            "../static/img/hadley.png",
+            "../static/img/southpark_general.jpg"
+          ],
+          "/posts/vowpal_wabbit-the-redis-of-the-data-science-community.html": [
+            "../static/img/mryak.png",
+            "../static/img/freddy-couples.jpg",
+            "../static/img/gary-gaetti-no-earflap.jpg",
+            "../static/img/vw-help-1.png",
+            "../static/img/vw-help-2.png",
+            "../static/img/vw-help-3.png",
+            "../static/img/redis-logo.png",
+            "../static/img/stdin-cookie-monster.jpg",
+            "../static/img/vw-bashplot.png"
+          ],
+          "/posts/who-covers-the-spread.html": [
+            "../static/img/mryak.png",
+            "../static/img/01/WhoCoversTheSpread.png",
+            "../static/img/01/SpreadDensity.png",
+            "../static/img/01/DensityByWeek.png",
+            "../static/img/01/SpreadDiverganceByWeek.png"
+          ]
+        }
+        var request = new XMLHttpRequest();
+        request.open('GET', 'https://moontower.yhathq.com/predict?page=' + window.location.pathname + '&apikey=' + _mt.apikey, true);
+        // we got some predictions
+        request.onload = function() {
+            if (request.status >= 200 && request.status < 400){
+              var data = JSON.parse(request.responseText);
+              console.log(data);
+              if (data.result){
+                    data.result.forEach(function(page) {
+                        (pages[page.url] || []).forEach(function(img_src) {
+                        	try {
+	                            var img = new Image()
+	                            img.src = img_src;
+                        	} catch(e) {
+                        		console.log("could not pre-load: " + img_src);
+                        	}
+                        });
+                    });
+                }
+              }
+            };
+        // There was a connection error of some sort
+        request.onerror = function() {
+            
+        };
+        request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        request.send();
+      })();
+    </script>
+
 	      
 </body>
 <footer>

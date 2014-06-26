@@ -169,3 +169,7 @@ footer {
     color: #BFBFBF;
     border-color: #E5E5E5;
 }
+
+highlight {
+  background-color: yellow;
+}

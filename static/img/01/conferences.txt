@@ -1,0 +1,126 @@
+school,conference
+Army,Independents
+Brigham Young,Independents
+Navy,Independents
+Notre Dame,Independents
+Illinois,Big Ten
+Indiana,Big Ten
+Ohio State,Big Ten
+Penn State,Big Ten
+Purdue,Big Ten
+Wisconsin,Big Ten
+Iowa,Big Ten
+Michigan,Big Ten
+Michigan State,Big Ten
+Minnesota,Big Ten
+Nebraska,Big Ten
+Northwestern,Big Ten
+North,Pacific-12
+California,Pacific-12
+Oregon,Pacific-12
+Oregon State,Pacific-12
+Stanford,Pacific-12
+Washington,Pacific-12
+Washington State,Pacific-12
+Arizona,Pacific-12
+Arizona State,Pacific-12
+Colorado,Pacific-12
+Southern California,Pacific-12
+UCLA,Pacific-12
+Utah,Pacific-12
+Alabama,Southeastern
+Arkansas,Southeastern
+Auburn,Southeastern
+Louisiana State,Southeastern
+Mississippi,Southeastern
+Mississippi State,Southeastern
+Texas A&M,Southeastern
+Cincinnati,Big East
+Connecticut,Big East
+Louisville,Big East
+Pittsburgh,Big East
+Rutgers,Big East
+South Florida,Big East
+Syracuse,Big East
+Temple,Big East
+Arkansas State,Sun Belt
+Florida Atlantic,Sun Belt
+Florida International,Sun Belt
+Middle Tennessee,Sun Belt
+North Texas,Sun Belt
+South Alabama,Sun Belt
+Troy,Sun Belt
+UL Lafayette,Sun Belt
+UL Monroe,Sun Belt
+Western Kentucky,Sun Belt
+Idaho,Western Athletic
+Louisiana Tech,Western Athletic
+New Mexico State,Western Athletic
+San Jose State,Western Athletic
+Texas State,Western Athletic
+Texas-San Antonio,Western Athletic
+Utah State,Western Athletic
+Baylor,Big 12
+Iowa State,Big 12
+Kansas,Big 12
+Kansas State,Big 12
+Oklahoma,Big 12
+Oklahoma State,Big 12
+Texas,Big 12
+Texas Christian,Big 12
+Texas Tech,Big 12
+West Virginia,Big 12
+Akron,Mid-American
+Bowling Green,Mid-American
+Buffalo,Mid-American
+Kent State,Mid-American
+Massachusetts,Mid-American
+Miami (Ohio),Mid-American
+Ohio,Mid-American
+Ball State,Mid-American
+Central Michigan,Mid-American
+Eastern Michigan,Mid-American
+Northern Illinois,Mid-American
+Toledo,Mid-American
+Western Michigan,Mid-American
+Boston College,Atlantic Coast
+Clemson,Atlantic Coast
+Florida State,Atlantic Coast
+Maryland,Atlantic Coast
+North Carolina State,Atlantic Coast
+Wake Forest,Atlantic Coast
+Duke,Atlantic Coast
+Georgia Tech,Atlantic Coast
+Miami,Atlantic Coast
+North Carolina,Atlantic Coast
+Virginia,Atlantic Coast
+Virginia Tech,Atlantic Coast
+Air Force,Mountain West
+Boise State,Mountain West
+Colorado State,Mountain West
+Fresno State,Mountain West
+Hawaii,Mountain West
+Nevada,Mountain West
+New Mexico,Mountain West
+San Diego State,Mountain West
+UNLV,Mountain West
+Wyoming,Mountain West
+Florida,Southeastern
+Georgia,Southeastern
+Kentucky,Southeastern
+Missouri,Southeastern
+South Carolina,Southeastern
+Tennessee,Southeastern
+Vanderbilt,Southeastern
+Alabama-Birmingham,Conference USA
+Central Florida,Conference USA
+East Carolina,Conference USA
+Marshall,Conference USA
+Memphis,Conference USA
+Southern Mississippi,Conference USA
+Houston,Conference USA
+Rice,Conference USA
+Southern Methodist,Conference USA
+Texas El Paso,Conference USA
+Tulane,Conference USA
+Tulsa,Conference USA

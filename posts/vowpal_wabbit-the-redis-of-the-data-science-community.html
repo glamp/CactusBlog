@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>The Yaksis</title>
+	<link rel="shortcut icon" href="../static/favicon.ico">
+	<link rel="stylesheet" href="../static/css/master.css" type="text/css" media="screen" charset="utf-8">
+</head>
+<footer>
+	<a href="/">Home</a> | <a href="/me.html">Greg Lamp</a> | <a href="https://github.com/glamp" target="_blank">Github</a> | <a href="http://www.linkedin.com/pub/greg-lamp/36/77b/95b/" target="_blank">Linkedin</a> | <a href="/rss.xml">RSS</a>
+</footer>
+<body>
+	
+<nav>
+	<span class="prev">
+		
+			<a href='../posts/coffeescript-for-r.html'>
+				&laquo; CoffeeScript for R
+			</a>
+		
+	</span>
+	
+	<span>
+      <a href="/">
+        <img src="../static/img/mryak.png" style="height: 40px;">
+      </a>
+	</span>
+
+	<span class="next">
+		
+			<a href='../posts/ncaa-win-probs.html'>
+				NCAA Win Probabilities &raquo;
+			</a>
+		
+	</span>
+</nav>
+<article>
+	<header>
+		<h1>vowpal_wabbit: the redis of the data science community <span><a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></span></h1>
+
+		<h5><time pubdate="pubdate">March 1, 2014</time> by <span class="author">Greg Lamp</address></h5>
+	</header>
+		
+
+
+<p><code>vowpal_wabbit</code>, or <code>vw</code>, is an online learning program originally built by
+Yahoo! Research (now <a href="http://research.microsoft.com/en-us/">Microsoft Research</a>)
+. It's fairly basic to use, it's a command line tool and it's mostly written in
+C++. Even the <a href="http://hunch.net/~vw/">website</a> has a great Web 1.0 feel to it.</p>
+<p>Using <code>vw</code> basically maxes out your data science <a href="http://www.urbandictionary.com/define.php?term=style+points">style points</a>.
+It's like not wearing a mask in hockey, or having lift tickets from 3 foreign 
+countries on your ski jacket. Yeah, it's that cool.</p>
+<p><img src="../static/img/freddy-couples.jpg" style="height: 350px;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../static/img/gary-gaetti-no-earflap.jpg" style="height: 300px"></p>
+<p><em>Fred Couples -- No glove. Red pants. Matching bag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Gary Gaetti going sans-earflaps <strong>17 years after it was made illegal</strong></em></p>
+<h3>So it's cool, but what is it?</h3>
+<p><code>vw</code> was designed with the following in mind:</p>
+<ul>
+<li>be fast, scalable, and efficient</li>
+<li>support new algorithms and ongoing research</li>
+<li>dead drop simple</li>
+</ul>
+<p>I've always thought of <code>vw</code> as being a "data scientist's data scientist's tool".
+ It's one of those technologies where in order to get anything out of it you 
+have to know what you're doing. Just take a look at the man page.</p>
+<p><img src="../static/img/vw-help-1.png" style="height: 350px">
+<img src="../static/img/vw-help-2.png" style="height: 350px">
+<img src="../static/img/vw-help-3.png" style="height: 350px"></p>
+<p><em>You better know what you're getting into</em></p>
+<h3>Sort of like redis</h3>
+<p>It actually reminds me a lot of <a href="http://redis.io/"><code>redis</code></a>. redis is one of
+those tools that never fails to get engineers excited. My take on it is that
+it's so simple yet powerful that it's sort of a test of an engineer's true
+skill.</p>
+<p>I see the exact same sort of reaction from data scientists when talking about
+<code>vw</code>. <em>Finally! A chance to show off my math!</em></p>
+<p><img src="../static/img/redis-logo.png" style="height: 200px;"></p>
+<h3>What's it look like?</h3>
+<p>So <code>vw</code> is basically a <code>stdin</code> / <code>stdout</code> cookie monster. You run it from the
+shell and feed it a JSON-esque data structure and it pukes predictions back out
+at you. Pretty? No. Simple and easy to use? You bet!</p>
+<p><img src="../static/img/stdin-cookie-monster.jpg" style="height: 350px"></p>
+<p>Installing <code>vw</code> requires you to use <code>make</code>. It'll blast through a bunch of C++
+and leave you with the <code>vw</code> command. Just make sure you have the <a href="http://www.boost.org/">C++ boost lib</a>
+installed. You can run <code>brew install --without-python boost</code> if you're on OSX. 
+To install <code>vw</code>, follow along <a href="https://github.com/JohnLangford/vowpal_wabbit/wiki/Tutorial">here</a>. </p>
+<p>Now there have been clients written in other programming languages
+like <a href="https://github.com/josephreisinger/vowpal_porpoise"><code>vowpal_porpoise</code></a>,
+but the purist in me loves using <code>vw</code> in its true form.</p>
+<h3>Data</h3>
+<p>Since <code>vw</code> is an esoteric enough already, we're going to keep the dataset simple
+by using our old friend <code>iris</code>. I just wrote a bash one-liner to write write it 
+to a csv.</p>
+<pre><code>$ Rscript -e "write.csv(iris, stdout(), row.names=F)" &gt; iris.csv
+</code></pre>
+<p>To continue with the command line theme, I'm going to use <code>awk</code>, <code>sed</code>, <code>cat</code>,
+and <code>tail</code> to clean my data. The format that <code>vw</code> takes is a little dated. It's
+JSON-esque, but looks like this:</p>
+<p><code>label</code> | <code>feature1: value</code> <code>feature2: value</code> <code>feature3: value</code> ... <code>featureN: value</code></p>
+<pre><code>$ tail -n+2 \ 
+  | sed 's/"virginica"/1/g' \ 
+  | sed 's/"setosa"/2/g' \ 
+  | sed 's/"versicolor"/3/g' &gt; iris_numerical.csv
+$ cat iris_numerical.csv | awk -F, '{ print($5 " |" "sepal_length:" $1 " speal_width:" $2 " petal_length:" $3 " petal_width:" $4)}' &gt; iris.dat
+$ head iris.dat
+2 |sepal_length:5.1 speal_width:3.5 petal_length:1.4 petal_width:0.2
+2 |sepal_length:4.9 speal_width:3 petal_length:1.4 petal_width:0.2
+2 |sepal_length:4.7 speal_width:3.2 petal_length:1.3 petal_width:0.2
+2 |sepal_length:4.6 speal_width:3.1 petal_length:1.5 petal_width:0.2
+2 |sepal_length:5 speal_width:3.6 petal_length:1.4 petal_width:0.2
+2 |sepal_length:5.4 speal_width:3.9 petal_length:1.7 petal_width:0.4
+2 |sepal_length:4.6 speal_width:3.4 petal_length:1.4 petal_width:0.3
+2 |sepal_length:5 speal_width:3.4 petal_length:1.5 petal_width:0.2
+2 |sepal_length:4.4 speal_width:2.9 petal_length:1.4 petal_width:0.2
+2 |sepal_length:4.9 speal_width:3.1 petal_length:1.5 petal_width:0.1
+</code></pre>
+<p>Ok so it's weird, but it's fast and it works and it's easy to follow! By using 
+age old bash commands you're ensuring yourself of keeping out of the ongoing 
+<a href="http://readwrite.com/2013/11/25/python-displacing-r-as-the-programming-language-for-data-science#awesm=~oxiIhyAMjMyy5e">R vs Python War</a>
+and just about anyone worth their salt can follow along.</p>
+<p>Jerone Janssens is actually <a href="http://jeroenjanssens.com/2013/12/07/lean-mean-data-science-machine.html">writing a book</a> about doing data 
+analysis from the command line. It looks like it should be good!</p>
+<h3>Training</h3>
+<p>is pretty straightforward. Give it some data with a label and <code>vw</code> will
+start learning. There are <strong>a lot</strong> of configuration options for <code>vw</code>, including
+things like neural networks, logistic regression, and stochastic gradient 
+descent. Configuration options are specified as command line arguments. For now,
+we'll go with a fairly vanilla setting.</p>
+<pre><code>$ vw --oaa 3 # don't run this just yet!
+</code></pre>
+<p><code>--oaa 3</code> means we'll be doing one-against-all multiclass learning with 3 
+possible labels.</p>
+<p>You have a couple of options for how you can use <code>vw</code>. One is to use good 'ole 
+stdin/stdout. Just puke your data to stdout and then let <code>vw</code> eat it all up (in
+that regard I supposed it's sort of like a good dog).</p>
+<pre><code>$ cat iris.dat | vw --oaa 3
+
+Num weight bits = 18
+learning rate = 0.5
+initial_t = 0
+power_t = 0.5
+using no cache
+Reading datafile =
+num sources = 1
+average    since         example     example  current  current  current
+loss       last          counter      weight    label  predict features
+0.333333   0.333333          3      3.0          2        2        4
+0.166667   0.000000          6      6.0          2        2        4
+0.090909   0.000000         11     11.0          2        2        4
+0.045455   0.000000         22     22.0          2        2        4
+0.022727   0.000000         44     44.0          2        2        4
+0.045977   0.069767         87     87.0          3        3        4
+
+finished run
+number of examples per pass = 150
+passes used = 1
+weighted example sum = 150
+weighted label sum = 0
+average loss = 0.0466667
+best constant = 0
+total feature number = 600
+</code></pre>
+<p>You can also specify a data file using the <code>-d</code> argument.</p>
+<pre><code>$ vw --oaa 3 -d iris.dat
+</code></pre>
+<p>You also might find it handy to save your model so you can use it later. To do 
+that just specify a file using the <code>-f</code> argument. <code>vw</code> will save a binary file
+that contains the data required to run your model.</p>
+<pre><code>$ vw --oaa 3 -d iris.dat -f iris.model
+# yep, it's a binary!
+$ cat iris.model
+7.4.0m@@#
+         &lt;И;�&lt;���&lt;)W1��;\���&gt;
+</code></pre>
+<h3>Making Predictions</h3>
+<p>So you can train a model on your data, but how do you make predictions? Well 
+that's pretty easy too. Just feed <code>vw</code> some more data and ask nicely using the 
+<code>-p</code> argument. If you'd like predictions to go to a file, just pass a filename. 
+If you just want to print them back out to the terminal, then pass it 
+<code>/dev/stdout</code>.</p>
+<pre><code>$ vw -d iris.dat -f iris.model -p iris.preds
+$ vw -d iris.dat -f iris.model -p /dev/stdout
+# the diagnostics can get a little annoying; use --quiet to supress them
+$ vw -d iris.dat -f iris.model -p /dev/stdout --quiet
+</code></pre>
+<h3>Mix in a little <code>bashplotlib</code></h3>
+<p>I couldn't resist. I just had to get <a href="/posts/bashplotlib.html"><code>bashplotlib</code></a> 
+into the mix.</p>
+<pre><code>$ vw -d iris.dat -f iris.model -p /dev/stdout --quiet | hist
+</code></pre>
+<p><img src="../static/img/vw-bashplot.png" style="height: 500px"></p>
+<h3>Wrap Up</h3>
+<p>I have barely scratched the surface of what <code>vw</code> can do. I'll be the first one 
+to admit that I'm by no means an expert on the topic either!</p>
+<p><code>vw</code> has some really great online and adaptive learning methods as well. They 
+allow you to continuously train and make updates to your model, while also being
+able to generate predictions. It's pretty cool stuff that I'll expand on in a 
+future post.</p>
+<p>If you're looking for more <code>vw</code> resources, check these out:</p>
+<ul>
+<li><a href="http://hunch.net/~vw/">hunch.net</a></li>
+<li><a href="https://github.com/JohnLangford/vowpal_wabbit/wiki/v7.0_tutorial.pdf">Tutorial from John Langford</a></li>
+<li><a href="http://www.youtube.com/watch?v=q_BjcopyHq0">Video Tutorial</a></li>
+</ul>
+
+	<footer>
+		Thanks for reading.
+	</footer>
+</article>
+	
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-37248601-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+  <script>
+  var _mt = _mt || {};
+  _mt.apikey = 'NX9aRz50';
+  _mt.auto = true;
+  _mt.init = function(response){
+    // [OPTIONAL]: do something with response
+    console.log(JSON.stringify(response, null, 2));
+  };
+  (function() { var mt = document.createElement('script'); mt.type = 'text/javascript'; mt.async = true; mt.src = 'http://moontower.s3.amazonaws.com/moontower.min.js'; var s = document.getElementsByTagName('script'); var l = s[s.length - 1]; l.parentNode.insertBefore(mt, l.nextSibling);
+  })();
+  </script>
+  <script>
+  var _mt = _mt || {};
+  _mt.apikey = 'NX9aRz50';
+  _mt.image_map = true;
+  _mt.lightbox = false;
+  (function() { var mt = document.createElement('script'); mt.type = 'text/javascript';mt.async = true; mt.src = 'http://cdn.yhathq.com/moontower.min.js'; var s = document.getElementsByTagName('script'); var l = s[s.length - 1]; l.parentNode.insertBefore(mt, l.nextSibling);})();
+  </script>
+
+	      
+</body>
+<footer>
+	<a href="/">Home</a> | <a href="/me.html">Greg Lamp</a> | <a href="https://github.com/glamp" target="_blank">Github</a> | <a href="http://www.linkedin.com/pub/greg-lamp/36/77b/95b/" target="_blank">Linkedin</a> | <a href="/rss.xml">RSS</a>
+</footer>
+</html>

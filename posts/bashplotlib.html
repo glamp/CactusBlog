@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>The Yaksis</title>
+	<link rel="shortcut icon" href="../static/favicon.ico">
+	<link rel="stylesheet" href="../static/css/master.css" type="text/css" media="screen" charset="utf-8">
+</head>
+<footer>
+	<a href="/">Home</a> | <a href="/me.html">Greg Lamp</a> | <a href="https://github.com/glamp" target="_blank">Github</a> | <a href="http://www.linkedin.com/pub/greg-lamp/36/77b/95b/" target="_blank">Linkedin</a> | <a href="/rss.xml">RSS</a>
+</footer>
+<body>
+	
+<nav>
+	<span class="prev">
+		
+			<a href='../posts/r-chart-chooser.html'>
+				&laquo; Juice Labs Chart Chooser in R
+			</a>
+		
+	</span>
+	
+	<span>
+      <a href="/">
+        <img src="../static/img/mryak.png" style="height: 40px;">
+      </a>
+	</span>
+
+	<span class="next">
+		
+			<a href='../posts/r-packages.html'>
+				Guide to R pacakges &raquo;
+			</a>
+		
+	</span>
+</nav>
+<article>
+	<header>
+		<h1>bashplotlib - plotting in the terminal <span><a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></span></h1>
+
+		<h5><time pubdate="pubdate">February 6, 2013</time> by <span class="author">Greg Lamp</address></h5>
+	</header>
+		
+
+
+<p>Have you ever been combing through log files on a server and thought, "This would be a lot easier to investigate if I could just plot this?" Well I was one of those people. I didn't want to keep transfering files off the server just to make a quick plot in R, but I also didn't want to install Rstudio on the server either. I just wanted a quick and dirty way to make some basic plots.</p>
+
+<p>I couldn't find anything that fit the bill so I wrote bashplotlib. It's a command line tool written in pure Python that plots in stdout. It's simple to use and runs fairly quickly on largish files. </p>
+
+<p>The <a href="https://github.com/glamp/bashplotlib" target="_nofollow">github page</a> has info on installation and usage. To install just run <span><pre>pip install -U bashplotlib</pre></span>Have fun!</p>
+
+<h3>And now for some examples...</h3>
+
+<p>To download example data, see <a href="https://github.com/glamp/bashplotlib/blob/master/examples/" target="_nofollow">examples on github.</a></p>
+
+<pre>hist --file million.txt</pre>
+
+<p><img src="../static/img/04/million.png"></p>
+<pre>scatter -x x_test.txt -y y_test.txt</pre>
+
+<p><img src="../static/img/04/scatter.png"></p>
+<h5>My personal favorite, plotting maps in the terminal...</h5>
+
+<pre>scatter --file texas.txt</pre>
+
+<p><img src="../static/img/04/texas.png"></p>
+<h5>Who said you had to plot files?</h5>
+
+<pre>curl http://www.baseball-reference.com/ | grep -o -E "[$]([0-9]+)" | grep -o -E "[0-9]+" \
+    | hist -t "Baseball Payrolls"</pre>
+
+<p><img src="../static/img/04/payrolls.png"></p>
+<h5>And it does colors</h5>
+
+<pre>cat lower48.txt | scatter --colour red --title USA --size 30</pre>
+
+<p><img src="../static/img/04/usa.png"></p>
+
+	<footer>
+		Thanks for reading.
+	</footer>
+</article>
+	
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-37248601-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+  <script>
+  var _mt = _mt || {};
+  _mt.apikey = 'NX9aRz50';
+  _mt.auto = true;
+  _mt.init = function(response){
+    // [OPTIONAL]: do something with response
+    console.log(JSON.stringify(response, null, 2));
+  };
+  (function() { var mt = document.createElement('script'); mt.type = 'text/javascript'; mt.async = true; mt.src = 'http://moontower.s3.amazonaws.com/moontower.min.js'; var s = document.getElementsByTagName('script'); var l = s[s.length - 1]; l.parentNode.insertBefore(mt, l.nextSibling);
+  })();
+  </script>
+  <script>
+  var _mt = _mt || {};
+  _mt.apikey = 'NX9aRz50';
+  _mt.image_map = true;
+  _mt.lightbox = false;
+  (function() { var mt = document.createElement('script'); mt.type = 'text/javascript';mt.async = true; mt.src = 'http://cdn.yhathq.com/moontower.min.js'; var s = document.getElementsByTagName('script'); var l = s[s.length - 1]; l.parentNode.insertBefore(mt, l.nextSibling);})();
+  </script>
+
+	      
+</body>
+<footer>
+	<a href="/">Home</a> | <a href="/me.html">Greg Lamp</a> | <a href="https://github.com/glamp" target="_blank">Github</a> | <a href="http://www.linkedin.com/pub/greg-lamp/36/77b/95b/" target="_blank">Linkedin</a> | <a href="/rss.xml">RSS</a>
+</footer>
+</html>

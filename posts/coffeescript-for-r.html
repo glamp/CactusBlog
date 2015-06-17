@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>The Yaksis</title>
+	<link rel="shortcut icon" href="../static/favicon.ico">
+	<link rel="stylesheet" href="../static/css/master.css" type="text/css" media="screen" charset="utf-8">
+</head>
+<footer>
+	<a href="/">Home</a> | <a href="/me.html">Greg Lamp</a> | <a href="https://github.com/glamp" target="_blank">Github</a> | <a href="http://www.linkedin.com/pub/greg-lamp/36/77b/95b/" target="_blank">Linkedin</a> | <a href="/rss.xml">RSS</a>
+</footer>
+<body>
+	
+<nav>
+	<span class="prev">
+		
+			<a href='../posts/6-reasons-r-isnt-going-anywhere.html'>
+				&laquo; 6 reasons R isn&#39;t going anywhere
+			</a>
+		
+	</span>
+	
+	<span>
+      <a href="/">
+        <img src="../static/img/mryak.png" style="height: 40px;">
+      </a>
+	</span>
+
+	<span class="next">
+		
+			<a href='../posts/vowpal_wabbit-the-redis-of-the-data-science-community.html'>
+				vowpal_wabbit: the redis of the data science community &raquo;
+			</a>
+		
+	</span>
+</nav>
+<article>
+	<header>
+		<h1>CoffeeScript for R <span><a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></span></h1>
+
+		<h5><time pubdate="pubdate">December 22, 2013</time> by <span class="author">Greg Lamp</address></h5>
+	</header>
+		
+
+
+<p>Have you ever noticed how similar R and JavaScript are? It's shocking given how 
+different they are in terms of functionality, but it's true. Take a look at this
+function. This is 100% valid in both Javascript and R.</p>
+<pre><code>fib = function(n) {
+  if (n==0) {
+    return (0)
+  } else if (n==1) {
+    return (1)
+  } else {
+    return (fib(n-1) + fib(n-2))
+  }
+}
+</code></pre>
+<p>In addition they share a lot of the same intricacies surrounding OOP. OOP isn't
+something that comes very natural in either R or Javascript, but it's something
+that people tend to want. As a result, they find ways to force OOP into the 
+language. Whether it's <code>prototype</code> in Javascript, or <code>ReferenceClasses</code> in R, 
+they're both going for the same thing.</p>
+<h3>Why the complaints?</h3>
+<p>R and JavaScript catch a lot of heat for thier syntax. Whether it's the 4 
+differnet ways to do variable assignment in R, or the psuedo-optional semicolons
+in JavaScript, they both definitely have thier quirks.</p>
+<pre><code># Yes...these all do the same thing
+assign("x", 1)
+x = 1
+x &lt;- 1
+1 -&gt; x
+</code></pre>
+<h3>CoffeeScript to the rescue</h3>
+<p>One reason that Javascript has been able to overcome some of the syntactic
+pundits has been <a href="http://coffeescript.org/">CoffeeScript</a>. CoffeeScript is a 
+language that compiles into JavaScript. It provides some syntactic sugar on top
+of JavaScript that makes it a lot easier to look at. Things like:</p>
+<ul>
+<li>fewer brackets </li>
+<li>better OOP</li>
+<li>improved iteration</li>
+<li>improved string functionality</li>
+<li>easier arrays</li>
+</ul>
+<p>Bascially it's less typing and easier on the eyes.</p>
+<h3>CoffeeScript meets R</h3>
+<p>So maybe you can see where I'm going with this. But what if we could leverage
+all of the functionality and depth of R but provide a less prickly way to
+interact with the language?</p>
+<p>I've written a spec for <a href="https://github.com/glamp/coffee-script-for-r/">"CoffeeScript for R"</a>
+. Here are some ideas (everything subject to change!)...</p>
+<h4>Variable Assignment</h4>
+<p>Only accept <code>=</code></p>
+<h4>Data Frames</h4>
+<p>Allow "dot" access to columns</p>
+<pre><code>df = data.frame(x=1:100, y=1:100)
+df.one = 1
+</code></pre>
+<p>Less verbose subsetting and selecting of data</p>
+<pre><code>df[x &gt; 100, ]
+df[x &gt; 100 &amp; y &lt; 10, ]
+df[, ['x', 'y']]
+df[x &gt; 100, ['x', 'y']]
+</code></pre>
+<p>Ability to slice with or without begining/ending index</p>
+<pre><code>df[1:,]
+df[:10,]
+</code></pre>
+<p>Negative Indexing</p>
+<pre><code># returns last 10 rows of data frame
+df[-10:-1,]
+</code></pre>
+<p>Plus equals, times equals, etc.</p>
+<pre><code>df.one *= -1
+df.one /= -1
+df.one == -1
+</code></pre>
+<h4>Scoping</h4>
+<p>Allow scope to be defined by indentation instead of brackets</p>
+<pre><code>for i in 1:100:
+    print(i)
+</code></pre>
+<h4>Looping</h4>
+<p>For loops should be more arbitrary like Python or Ruby</p>
+<pre><code>for i in seq(1, 100):
+    print(i)
+</code></pre>
+<p>Sequences like Ruby</p>
+<pre><code>for i in 0..100:
+    print(i)
+</code></pre>
+<h4>Lists</h4>
+<p>Define true lists as you would in Python or Ruby. Lists should be able
+to take arbitrary types but should have a type. So something with strings
+and list would become an object but you can still operate the column.</p>
+<pre><code>myList = [1, 2, 3]
+</code></pre>
+<h4>Dicts</h4>
+<p>A dictionary like Python or Ruby. Simple key/value pairs.</p>
+<pre><code>x = {"one": 1, "two": 2, "three": "We're really doing it Harry!"}
+x['one']
+</code></pre>
+<h4>Functions</h4>
+<p>Slightly more sugary function definition. Also need to figure out what <code>...</code> does
+and then make it easier to use.</p>
+<pre><code>function hello():
+  return "Hello, Greg!"
+</code></pre>
+<h4>Classes</h4>
+<p>More sane class structures. Allow users to define classes with properties, 
+initializers, etc.</p>
+<pre><code>class MyObject:
+  function init(something):
+    this.something = something
+  function equals(aMyObject):
+    return this.something==aMyObject.something
+  function hello(name):
+    print("Hello!", name)
+
+class MyOtherObject(MyObject):
+  function say_what():
+    print("say what!?!")
+</code></pre>
+<p>Creating objects should be like Ruby/Python.</p>
+<pre><code>myObj = MyObject("something wicked")
+</code></pre>
+<h4>Docstrings</h4>
+<p>Docstring support like Python for functions and classes.</p>
+<pre><code>function hello(somebody):
+  """
+  Says hello to somebody
+
+  params:
+    somebody - someone who wants to be greeted
+  """
+  return "Hello! " + somebody
+</code></pre>
+<h4>Package Manager</h4>
+<p>R needs a better package manager. CRAN is great until it's a pain. A less 
+stringent, easier to use package manager could really help. People are already
+thinking about this <a href="https://github.com/rstudio/packrat">packrat</a> and I'm seeing
+more and more R packages NOT distributed on CRAN in favor of just using github
+in conjunction with <code>devtools::install_github</code>.</p>
+<pre><code>$ rpm install foo
+$ rpm freeze &gt; packages.txt
+$ rpm install packages.txt
+</code></pre>
+<h4>Strings and output</h4>
+<p>Strings in R are totally bizarre. You should be able to concatenate strings by
+adding them together. Adding a string with a non-string (a number) should invoke
+the <code>toString()</code> on the non-string and add them together.</p>
+<pre><code>'x' + 'y' =='xy'
+</code></pre>
+<p>Printing also needs to do what you think it should. </p>
+<pre><code>print("hello", "greg")
+# hello greg
+</code></pre>
+<p>Block string support</p>
+<pre><code>x = """this
+is
+a
+multi-line
+string
+"""
+</code></pre>
+<h3>Want to help?</h3>
+<p>If anyone is interested in working on the project or being a pilot user, drop
+me a line at <a href="mailto:lamp.greg@gmail.com">lamp.greg@gmail.com</a>.</p>
+
+	<footer>
+		Thanks for reading.
+	</footer>
+</article>
+	
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-37248601-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+  <script>
+  var _mt = _mt || {};
+  _mt.apikey = 'NX9aRz50';
+  _mt.auto = true;
+  _mt.init = function(response){
+    // [OPTIONAL]: do something with response
+    console.log(JSON.stringify(response, null, 2));
+  };
+  (function() { var mt = document.createElement('script'); mt.type = 'text/javascript'; mt.async = true; mt.src = 'http://moontower.s3.amazonaws.com/moontower.min.js'; var s = document.getElementsByTagName('script'); var l = s[s.length - 1]; l.parentNode.insertBefore(mt, l.nextSibling);
+  })();
+  </script>
+  <script>
+  var _mt = _mt || {};
+  _mt.apikey = 'NX9aRz50';
+  _mt.image_map = true;
+  _mt.lightbox = false;
+  (function() { var mt = document.createElement('script'); mt.type = 'text/javascript';mt.async = true; mt.src = 'http://cdn.yhathq.com/moontower.min.js'; var s = document.getElementsByTagName('script'); var l = s[s.length - 1]; l.parentNode.insertBefore(mt, l.nextSibling);})();
+  </script>
+
+	      
+</body>
+<footer>
+	<a href="/">Home</a> | <a href="/me.html">Greg Lamp</a> | <a href="https://github.com/glamp" target="_blank">Github</a> | <a href="http://www.linkedin.com/pub/greg-lamp/36/77b/95b/" target="_blank">Linkedin</a> | <a href="/rss.xml">RSS</a>
+</footer>
+</html>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+        <title>The Yaksis</title>
+        <description>Greg's blog</description>
+        <link>http://www.yaksis.com/</link>
+        <lastBuildDate>Sun, 30 Dec 2012 00:01:00 +0000</lastBuildDate>
+        <pubDate>Sun, 30 Dec 2012 00:01:00 +0000</pubDate>
+        <ttl>1800</ttl>
+ 
+        
+                <item>
+                        <title>Building R Packages</title>
+                        <description>Building R Packages</description>
+                        <link>http://www.yaksis.com/posts/building-r-packages.html</link>
+                        <guid>http://www.yaksis.com/posts/building-r-packages.html</guid>
+                        <pubDate>Sun, 9 Nov 2014 00:00:00 -0500</pubDate>
+                </item>
+        
+                <item>
+                        <title>Spaghetti alla Carbonara</title>
+                        <description>Spaghetti alla Carbonara</description>
+                        <link>http://www.yaksis.com/posts/project-pasta/carbanara.html</link>
+                        <guid>http://www.yaksis.com/posts/project-pasta/carbanara.html</guid>
+                        <pubDate>Mon, 25 Aug 2014 00:00:00 -0400</pubDate>
+                </item>
+        
+                <item>
+                        <title>NCAA Win Probabilities</title>
+                        <description>NCAA Win Probabilities</description>
+                        <link>http://www.yaksis.com/posts/ncaa-win-probs.html</link>
+                        <guid>http://www.yaksis.com/posts/ncaa-win-probs.html</guid>
+                        <pubDate>Sun, 9 Mar 2014 00:00:00 -0500</pubDate>
+                </item>
+        
+                <item>
+                        <title>vowpal_wabbit: the redis of the data science community</title>
+                        <description>vowpal_wabbit: the redis of the data science community</description>
+                        <link>http://www.yaksis.com/posts/vowpal_wabbit-the-redis-of-the-data-science-community.html</link>
+                        <guid>http://www.yaksis.com/posts/vowpal_wabbit-the-redis-of-the-data-science-community.html</guid>
+                        <pubDate>Sat, 1 Mar 2014 00:00:00 -0500</pubDate>
+                </item>
+        
+                <item>
+                        <title>CoffeeScript for R</title>
+                        <description>CoffeeScript for R</description>
+                        <link>http://www.yaksis.com/posts/coffeescript-for-r.html</link>
+                        <guid>http://www.yaksis.com/posts/coffeescript-for-r.html</guid>
+                        <pubDate>Sun, 22 Dec 2013 00:00:00 -0500</pubDate>
+                </item>
+        
+                <item>
+                        <title>6 reasons R isn&#39;t going anywhere</title>
+                        <description>6 reasons R isn&#39;t going anywhere</description>
+                        <link>http://www.yaksis.com/posts/6-reasons-r-isnt-going-anywhere.html</link>
+                        <guid>http://www.yaksis.com/posts/6-reasons-r-isnt-going-anywhere.html</guid>
+                        <pubDate>Sat, 21 Dec 2013 00:00:00 -0500</pubDate>
+                </item>
+        
+                <item>
+                        <title>Guide to R pacakges</title>
+                        <description>Guide to R pacakges</description>
+                        <link>http://www.yaksis.com/posts/r-packages.html</link>
+                        <guid>http://www.yaksis.com/posts/r-packages.html</guid>
+                        <pubDate>Sun, 10 Feb 2013 00:00:00 -0500</pubDate>
+                </item>
+        
+                <item>
+                        <title>bashplotlib - plotting in the terminal</title>
+                        <description>bashplotlib - plotting in the terminal</description>
+                        <link>http://www.yaksis.com/posts/bashplotlib.html</link>
+                        <guid>http://www.yaksis.com/posts/bashplotlib.html</guid>
+                        <pubDate>Wed, 6 Feb 2013 00:00:00 -0500</pubDate>
+                </item>
+        
+                <item>
+                        <title>Juice Labs Chart Chooser in R</title>
+                        <description>Juice Labs Chart Chooser in R</description>
+                        <link>http://www.yaksis.com/posts/r-chart-chooser.html</link>
+                        <guid>http://www.yaksis.com/posts/r-chart-chooser.html</guid>
+                        <pubDate>Sun, 30 Dec 2012 00:00:00 -0500</pubDate>
+                </item>
+        
+                <item>
+                        <title>Why use SVM?</title>
+                        <description>Why use SVM?</description>
+                        <link>http://www.yaksis.com/posts/why-use-svm.html</link>
+                        <guid>http://www.yaksis.com/posts/why-use-svm.html</guid>
+                        <pubDate>Sun, 23 Dec 2012 00:00:00 -0500</pubDate>
+                </item>
+        
+                <item>
+                        <title>Who covers the spread?</title>
+                        <description>Who covers the spread?</description>
+                        <link>http://www.yaksis.com/posts/who-covers-the-spread.html</link>
+                        <guid>http://www.yaksis.com/posts/who-covers-the-spread.html</guid>
+                        <pubDate>Sat, 1 Sep 2012 00:00:00 -0400</pubDate>
+                </item>
+        
+
+ 
+</channel>
+</rss>

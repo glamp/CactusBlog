@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>The Yaksis</title>
+	<link rel="shortcut icon" href="../static/favicon.ico">
+	<link rel="stylesheet" href="../static/css/master.css" type="text/css" media="screen" charset="utf-8">
+</head>
+<footer>
+	<a href="/">Home</a> | <a href="/me.html">Greg Lamp</a> | <a href="https://github.com/glamp" target="_blank">Github</a> | <a href="http://www.linkedin.com/pub/greg-lamp/36/77b/95b/" target="_blank">Linkedin</a> | <a href="/rss.xml">RSS</a>
+</footer>
+<body>
+	
+<nav>
+	<span class="prev">
+		
+			<a href='../posts/r-packages.html'>
+				&laquo; Guide to R pacakges
+			</a>
+		
+	</span>
+	
+	<span>
+      <a href="/">
+        <img src="../static/img/mryak.png" style="height: 40px;">
+      </a>
+	</span>
+
+	<span class="next">
+		
+			<a href='../posts/coffeescript-for-r.html'>
+				CoffeeScript for R &raquo;
+			</a>
+		
+	</span>
+</nav>
+<article>
+	<header>
+		<h1>6 reasons R isn&#39;t going anywhere <span><a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></span></h1>
+
+		<h5><time pubdate="pubdate">December 21, 2013</time> by <span class="author">Greg Lamp</address></h5>
+	</header>
+		
+
+
+<p>Recently there's been a flurry of blog posts and articles describing how Python
+is taking over R and that Python and/or Julia are going to blow it out of the
+water. But if you think that you're escaping from the death grip of <code>R</code>? I've
+got news for your Mr. Scientist, <code>R</code> is here to stay (at least for a while).</p>
+<p>I came across Matt Asay's <a href="http://readwrite.com/2013/11/25/python-displacing-r-as-the-programming-language-for-data-science">article</a>
+a few weeks ago on HackerNews. It's a great article, and I think the two
+strongest arguments it makes are:</p>
+<ul>
+<li>R is a pain in tough to learn</li>
+<li>Python is general purpose, wheras R is a specialist's language</li>
+</ul>
+<p>And while I think these things might be true, I don't think R is going to 
+be displaced by Python in the near future.</p>
+<h3>R is still cutting edge</h3>
+<p>So I'm not really sure how this one goes unnoticed, but despite the complaining
+about the syntax, R is still a cutting edge tool with millions of users.</p>
+<p><img src="../static/img/nnet.png" style="height: 450px; display: block;"></p>
+<h3>Time</h3>
+<p>R isn't new. It's been around for about 20-30 years. It's not just going to go
+away overnight.</p>
+<ul>
+<li>There are thousands of packages on <a href="http://cran.rproject.org">CRAN</a>. You can
+find niche, hyper-specific packages that fit your particular need.</li>
+<li>Large organizations using R aren't going to make "the switch" overnight. Many
+companies are <em>just now</em> escaping the death grip that <code>SAS</code> (the programming 
+langauge, not <a href="http://en.wikipedia.org/software-as-a-service">SaaS</a>). These are
+the  entities that constitutue a large portion of the user base, despite not
+having a very large voice. If and when these types of organizations move away 
+from R, it's going to take time happen (on the order of multiple years).</li>
+</ul>
+<p><img src="../static/img/r-packages.png" style="height: 450px; display: block;">
+<em>Don't believe me? Check out the <a href="http://cran.us.r-project.org/web/packages/available_packages_by_name.html">package listing</a></em></p>
+<h3>RStudio &gt; IPython Notebook</h3>
+<p>The IPython Notebook is great for presentations and tutorials, but when it comes
+to an actual analytical IDE, it's hard to beat <a href="http://www.rstudio.org">RStudio</a>
+. It looks great, is fast, and is <strong>the best</strong> web based app I have used. It
+actually feels the same as using it on your local computer.</p>
+<p><img src="../static/img/rstudio.png" style="height: 450px; display: block;"></p>
+<h3>How many people are <em>actaully</em> switching?</h3>
+<p>If you read <a href="http://news.ycombinator.com/">Hacker News</a> or
+<a href="http://reddit.com/r/programming">/r/programming</a>, you're most likely being
+over-exposed to tech that is "cool" but not neccessarily mainstream.</p>
+<p>Just think about how many B and C level R programmers are out there. They're not
+the sort of people who are considering moving to Python because there's a better
+version of RandomForest. </p>
+<h3>Because Hadley Wickham will be</h3>
+<p>R's fearless leader. Mr. Wickham has built <code>plyr</code>, <code>stringr</code>, and most
+notably, <code>ggplot2</code>. It's a laundry list of functionality that <em>should</em> exist in
+base R, but doesn't.</p>
+<p>I'm also excited about <a href="http://adv-r.had.co.nz/">Advanced R Programming</a>. I
+think it will help make package development in <code>R</code> more accessible to the 
+typical R user. Previously, the best documentation for building <code>R</code> packages
+was found <a href="http://cran.r-project.org/doc/manuals/R-exts.html">here</a>. Functional?
+Yes. Thurough? You bet. Helpful? Maybe. Easy to follow? Absolutely not.</p>
+<p>I have no doubt that the R community continue to benefit for Mr. Wickham's
+generosity in the years to come.</p>
+<p><img src="../static/img/hadley.png" style="height: 150px; display: block;">
+<em>Photo of Mr Wickham, courtesy gravatar</em></p>
+<h3>Pydata is confused</h3>
+<p>Pydata is the non-profit wing of Continuum Analytics. It essentially gives them
+a seperate avenue for raising money via donations and grants by which they can 
+pay developers to work on open source/government projects. In concept, I think
+it's great! We get more open source tools! But to date I've been a little 
+disappointed in the tools that have come out of the program:</p>
+<ul>
+<li><a href="https://github.com/ContinuumIO/bokeh"><code>Bokeh</code></a> takes dependency hell to a 
+different level. As I'm reading the dependencies list, it seems like 10 
+engineers were put in a room and just starting listing technologies and concepts
+that they thought were cool. In addition it's supposed to be an implementation
+of the grammar of graphics as well, though it really just looks like
+<code>matplotlib</code>.</li>
+<li><a href="http://numba.pydata.org/"><code>Numba</code></a> Seriously, who uses this?</li>
+<li><a href="http://blaze.pydata.org/"><code>Blaze</code></a> sounds sweet (next gen <code>numpy</code>) but I don't think it's going to be
+relevant for a long time. <code>numpy</code> only got popular once we were given <code>pandas</code>. 
+The fact of the matter is people like their data in rectangles--Excel, data 
+frames in R and <code>pandas</code>. So in order for <code>Blaze</code> to be of use to the average
+data scientist, <code>Blaze</code> is going to need a pandas-esque counterpart.</li>
+</ul>
+<h3>Final Thoughts</h3>
+<ul>
+<li>R is easy to install</li>
+<li>You can do <strong>a lot</strong> in base R</li>
+<li>Most analysts don't want a gernal purpose language (or at least don't know
+they <em>should</em> want one)</li>
+</ul>
+<p><img src="../static/img/southpark_general.jpg" style="height: 250px; display: block">
+<em>I've got news for you, Mr. Scientist</em> </p>
+
+	<footer>
+		Thanks for reading.
+	</footer>
+</article>
+	
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-37248601-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+  <script>
+  var _mt = _mt || {};
+  _mt.apikey = 'NX9aRz50';
+  _mt.auto = true;
+  _mt.init = function(response){
+    // [OPTIONAL]: do something with response
+    console.log(JSON.stringify(response, null, 2));
+  };
+  (function() { var mt = document.createElement('script'); mt.type = 'text/javascript'; mt.async = true; mt.src = 'http://moontower.s3.amazonaws.com/moontower.min.js'; var s = document.getElementsByTagName('script'); var l = s[s.length - 1]; l.parentNode.insertBefore(mt, l.nextSibling);
+  })();
+  </script>
+  <script>
+  var _mt = _mt || {};
+  _mt.apikey = 'NX9aRz50';
+  _mt.image_map = true;
+  _mt.lightbox = false;
+  (function() { var mt = document.createElement('script'); mt.type = 'text/javascript';mt.async = true; mt.src = 'http://cdn.yhathq.com/moontower.min.js'; var s = document.getElementsByTagName('script'); var l = s[s.length - 1]; l.parentNode.insertBefore(mt, l.nextSibling);})();
+  </script>
+
+	      
+</body>
+<footer>
+	<a href="/">Home</a> | <a href="/me.html">Greg Lamp</a> | <a href="https://github.com/glamp" target="_blank">Github</a> | <a href="http://www.linkedin.com/pub/greg-lamp/36/77b/95b/" target="_blank">Linkedin</a> | <a href="/rss.xml">RSS</a>
+</footer>
+</html>

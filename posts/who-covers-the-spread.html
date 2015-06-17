@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>The Yaksis</title>
+	<link rel="shortcut icon" href="../static/favicon.ico">
+	<link rel="stylesheet" href="../static/css/master.css" type="text/css" media="screen" charset="utf-8">
+</head>
+<footer>
+	<a href="/">Home</a> | <a href="/me.html">Greg Lamp</a> | <a href="https://github.com/glamp" target="_blank">Github</a> | <a href="http://www.linkedin.com/pub/greg-lamp/36/77b/95b/" target="_blank">Linkedin</a> | <a href="/rss.xml">RSS</a>
+</footer>
+<body>
+	
+<nav>
+	<span class="prev">
+		
+			First post
+		
+	</span>
+	
+	<span>
+      <a href="/">
+        <img src="../static/img/mryak.png" style="height: 40px;">
+      </a>
+	</span>
+
+	<span class="next">
+		
+			<a href='../posts/why-use-svm.html'>
+				Why use SVM? &raquo;
+			</a>
+		
+	</span>
+</nav>
+<article>
+	<header>
+		<h1>Who covers the spread? <span><a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></span></h1>
+
+		<h5><time pubdate="pubdate">September 1, 2012</time> by <span class="author">Greg Lamp</address></h5>
+	</header>
+		
+
+
+<p>
+Interstingly enough, it seems not all teams are staked equally. While most teams cover between 45%-55% (or about half) of their games, there are a few teams you might want to stay away from (or not bet against).  
+</p>
+
+<p><a href="../static/img/01/WhoCoversTheSpread.png" title="Open picture in new window" target="_blank">
+    <img src="../static/img/01/WhoCoversTheSpread.png" style="height:100%; width:100%;">
+</a></p>
+<p>
+Step 1: Data collection...
+There are plenty of sites that offer historical spreads for college football games. I wrote a quick screen scraper using Python that collected the team, spread, score, and date for each game and each team since 1985. It was pretty basic--just BeautifulSoup writing to a csv. 
+</p>
+
+<p>
+Step 2: Loading it into R...
+Next I wanted to take a look at the relationship between the Vegas spreads vs the acutal results of the games. As you might expect things looked pretty normal.
+</p>
+
+<p><a href="../static/img/01/SpreadDensity.png " title="Open picture in new window" target="_blank">
+    <img src="../static/img/01/SpreadDensity.png" style="height:100%; width:100%;">
+</a></p>
+<p>
+I wound up limiting to games played since 2000 to make the sample a little more consistent. Controlling for some other variables like week of the season and year didn't seem to make much difference. There were a few long tail events out to the right, but nothing mind blowing.
+</p>
+
+<p><a href="../static/img/01/DensityByWeek.png" title="Open picture in new window" target="_blank">
+    <img src="../static/img/01/DensityByWeek.png" style="height:100%; width:100%;">
+</a></p>
+<p><a href="../static/img/01/SpreadDiverganceByWeek.png" title="Open picture in new window" target="_blank">
+    <img src="../static/img/01/SpreadDiverganceByWeek.png" style="height:100%; width:100%;">
+</a></p>
+<p>
+So far nothing spectacular. But when you drill down into each team, things start to get a little bit more interesting. As mentioned earlier, most teams wind up somewhere right around the 50% mark. But a few teams stick out...
+
+Boise St., everyone's favorite small conference bully, covers a whopping 61% of spreads. Not very surprising since they have to show off against the likes of Idaho and Wyoming in order to make an impression on the Coaches and AP polls.
+
+UCONN (61%) and Washington (37%) also stand out, but to be honest I'm not sure what to make of them.
+
+Oddly enough, arch rivals Ohio State and Michigan wind up at opposite ends of the spectrum with Michigan near the bottom and Ohio State at #3. 
+</p>
+
+	<footer>
+		Thanks for reading.
+	</footer>
+</article>
+	
+	<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-37248601-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+  <script>
+  var _mt = _mt || {};
+  _mt.apikey = 'NX9aRz50';
+  _mt.auto = true;
+  _mt.init = function(response){
+    // [OPTIONAL]: do something with response
+    console.log(JSON.stringify(response, null, 2));
+  };
+  (function() { var mt = document.createElement('script'); mt.type = 'text/javascript'; mt.async = true; mt.src = 'http://moontower.s3.amazonaws.com/moontower.min.js'; var s = document.getElementsByTagName('script'); var l = s[s.length - 1]; l.parentNode.insertBefore(mt, l.nextSibling);
+  })();
+  </script>
+  <script>
+  var _mt = _mt || {};
+  _mt.apikey = 'NX9aRz50';
+  _mt.image_map = true;
+  _mt.lightbox = false;
+  (function() { var mt = document.createElement('script'); mt.type = 'text/javascript';mt.async = true; mt.src = 'http://cdn.yhathq.com/moontower.min.js'; var s = document.getElementsByTagName('script'); var l = s[s.length - 1]; l.parentNode.insertBefore(mt, l.nextSibling);})();
+  </script>
+
+	      
+</body>
+<footer>
+	<a href="/">Home</a> | <a href="/me.html">Greg Lamp</a> | <a href="https://github.com/glamp" target="_blank">Github</a> | <a href="http://www.linkedin.com/pub/greg-lamp/36/77b/95b/" target="_blank">Linkedin</a> | <a href="/rss.xml">RSS</a>
+</footer>
+</html>
